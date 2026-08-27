@@ -1,8 +1,39 @@
 import Button from "../components/Button";
 import profileImage from "../assets/image.png";
 import { socialLinks } from "../data/socialLinks";
-
+import { useState } from "react";
+import { useEffect } from "react";
 function Hero() {
+
+  const text = "TIM VUTHIN";
+
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+
+    if (!isDeleting && displayText.length < text.length) {
+      timer = setTimeout(() => {
+        setDisplayText(text.substring(0, displayText.length + 1));
+      }, 150);
+    } else if (!isDeleting && displayText.length === text.length) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2000);
+    } else if (isDeleting && displayText.length > 0) {
+      timer = setTimeout(() => {
+        setDisplayText(text.substring(0, displayText.length - 1));
+      }, 100);
+    } else if (isDeleting && displayText.length === 0) {
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+      }, 500);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting]);
+
   return (
     <section className="hero-section" id="top">
       <div className="hero-copy">
@@ -10,7 +41,10 @@ function Hero() {
           👋 HELLO, I&apos;M
         </p>
         <h1 className="hero-title reveal-item">
-          <span>VUTHIN</span>
+          <span className="typewriter-name">
+            {displayText}
+            <span className="cursor">|</span>
+          </span>
           <br />
           <em>FULL STACK</em>
           <br />
