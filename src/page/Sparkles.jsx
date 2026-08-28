@@ -1,26 +1,36 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 
 function Sparkles() {
   const sparkles = useMemo(() => {
-    return Array.from({ length: 60 }, (_, index) => ({
-      id: index,
-      left: (index * 37) % 100,
-      top: (index * 61) % 100,
-      size: (index * 13) % 8 + 4,
-      duration: (index * 7) % 4 + 3,
-      delay: (index * 11) % 5,
-      moveX: (index * 17) % 40 - 20,
-      moveY: (index * 23) % 40 - 20,
-      isStar: index % 2 === 0,
-    }));
+    return Array.from({ length: 50 }, (_, index) => {
+      // Deterministic pseudorandom generator based on index
+      const pseudoRand = (seed) => {
+        const x = Math.sin(index + seed) * 10000;
+        return x - Math.floor(x);
+      };
+
+      return {
+        id: index,
+        left: Math.floor(pseudoRand(1) * 100),
+        top: Math.floor(pseudoRand(2) * 100),
+        size: Math.floor(pseudoRand(3) * 8) + 4,
+        duration: (pseudoRand(4) * 4 + 4).toFixed(2), // 4s - 8s for slow, graceful float
+        delay: (pseudoRand(5) * 5).toFixed(2),
+        moveX: Math.floor(pseudoRand(6) * 60 - 30), // Slightly larger drift range
+        moveY: Math.floor(pseudoRand(7) * 60 - 30),
+        rotate: Math.floor(pseudoRand(8) * 360),
+        hue: Math.floor(pseudoRand(9) * 40 + 200), // Subtle blue-to-gold chromatic highlights
+        isStar: index % 2 === 0,
+      };
+    });
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
       {sparkles.map((sparkle) => (
         <span
           key={sparkle.id}
-          className={sparkle.isStar ? "star" : "sparkle-dot"}
+          className={sparkle.isStar ? "star-graceful" : "dot-graceful"}
           style={{
             left: `${sparkle.left}%`,
             top: `${sparkle.top}%`,
@@ -30,6 +40,9 @@ function Sparkles() {
             animationDelay: `${sparkle.delay}s`,
             "--move-x": `${sparkle.moveX}px`,
             "--move-y": `${sparkle.moveY}px`,
+            "--initial-rotate": `${sparkle.rotate}deg`,
+            "--sparkle-color": `hsla(${sparkle.hue}, 100%, 95%, 0.9)`,
+            "--sparkle-glow": `hsla(${sparkle.hue}, 90%, 75%, 0.6)`,
           }}
         />
       ))}
@@ -37,143 +50,93 @@ function Sparkles() {
       <style>
         {`
           /* =========================
-             STAR
+             SHARED CORE STYLES
           ========================= */
 
-          .star {
+          .star-graceful,
+          .dot-graceful {
             position: absolute;
             display: block;
-            background: white;
+            pointer-events: none;
+            will-change: transform, opacity;
+            transform-origin: center center;
+          }
+
+          /* =========================
+             GRACEFUL STAR
+          ========================= */
+
+          .star-graceful {
+            background: var(--sparkle-color, #ffffff);
             clip-path: polygon(
               50% 0%,
-              58% 42%,
+              62% 38%,
               100% 50%,
-              58% 58%,
+              62% 62%,
               50% 100%,
-              42% 58%,
+              38% 62%,
               0% 50%,
-              42% 42%
+              38% 38%
             );
-
-            filter:
-              drop-shadow(0 0 3px white)
-              drop-shadow(0 0 7px rgba(255,255,255,0.8));
-
-            animation-name: starFloat;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
+            filter: drop-shadow(0 0 6px var(--sparkle-glow, rgba(255, 255, 255, 0.8)));
+            animation: floatStar ease-in-out infinite alternate;
           }
 
           /* =========================
-             SMALL GLOWING DOT
+             GRACEFUL GLOWING DOT
           ========================= */
 
-          .sparkle-dot {
-            position: absolute;
-            display: block;
-            border-radius: 9999px;
-            background: white;
-
+          .dot-graceful {
+            border-radius: 50%;
+            background: var(--sparkle-color, #ffffff);
             box-shadow:
-              0 0 5px white,
-              0 0 10px rgba(255,255,255,0.7),
-              0 0 18px rgba(255,255,255,0.4);
-
-            animation-name: dotFloat;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
+              0 0 6px var(--sparkle-glow, rgba(255, 255, 255, 0.9)),
+              0 0 12px var(--sparkle-glow, rgba(255, 255, 255, 0.5));
+            animation: floatDot ease-in-out infinite alternate;
           }
 
           /* =========================
-             STAR ANIMATION
+             KEYFRAMES (Smooth Trajectory)
           ========================= */
 
-          @keyframes starFloat {
+          @keyframes floatStar {
             0% {
               opacity: 0;
               transform:
-                translate(0, 0)
-                scale(0.3)
-                rotate(0deg);
+                translate3d(0, 0, 0)
+                scale(0.2)
+                rotate(var(--initial-rotate));
             }
-
-            25% {
-              opacity: 1;
-              transform:
-                translate(
-                  calc(var(--move-x) * 0.3),
-                  calc(var(--move-y) * 0.3)
-                )
-                scale(1)
-                rotate(45deg);
-            }
-
             50% {
-              opacity: 0.4;
+              opacity: 0.95;
               transform:
-                translate(
-                  var(--move-x),
-                  var(--move-y)
-                )
-                scale(1.5)
-                rotate(90deg);
+                translate3d(calc(var(--move-x) * 0.5), calc(var(--move-y) * 0.5), 0)
+                scale(1.1)
+                rotate(calc(var(--initial-rotate) + 90deg));
             }
-
-            75% {
-              opacity: 1;
-              transform:
-                translate(
-                  calc(var(--move-x) * 0.5),
-                  calc(var(--move-y) * 0.5)
-                )
-                scale(0.8)
-                rotate(135deg);
-            }
-
             100% {
               opacity: 0;
               transform:
-                translate(0, 0)
+                translate3d(var(--move-x), var(--move-y), 0)
                 scale(0.3)
-                rotate(180deg);
+                rotate(calc(var(--initial-rotate) + 180deg));
             }
           }
 
-          /* =========================
-             DOT ANIMATION
-          ========================= */
-
-          @keyframes dotFloat {
+          @keyframes floatDot {
             0% {
               opacity: 0;
-              transform:
-                translate(0, 0)
-                scale(0.5);
+              transform: translate3d(0, 0, 0) scale(0.3);
             }
-
-            30% {
-              opacity: 1;
-            }
-
             50% {
-              opacity: 0.3;
+              opacity: 0.85;
               transform:
-                translate(
-                  var(--move-x),
-                  var(--move-y)
-                )
-                scale(1.4);
+                translate3d(calc(var(--move-x) * 0.6), calc(var(--move-y) * 0.6), 0)
+                scale(1.2);
             }
-
-            70% {
-              opacity: 1;
-            }
-
             100% {
               opacity: 0;
-              transform:
-                translate(0, 0)
-                scale(0.5);
+              transform: translate3d(var(--move-x), var(--move-y), 0) scale(0.3);
             }
           }
         `}

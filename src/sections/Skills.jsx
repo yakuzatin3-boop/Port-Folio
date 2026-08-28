@@ -71,12 +71,10 @@ function Skills() {
             <br />
             <span>behind the work.</span>
           </h2>
-          <span className="stack-index">[ {skills.length} TOOLS ]</span>
         </div>
         <div className="skills-list">
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
             <span className="skill-pill" key={skill}>
-              <small>{String(index + 1).padStart(2, "0")}</small>
               <span
                 className="skill-icon"
                 style={{

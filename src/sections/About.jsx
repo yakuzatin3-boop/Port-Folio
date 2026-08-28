@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Database, Server, Smartphone } from "lucide-react";
 import profileImage from "../assets/IMG_20260801_100600_534.jpg";
+import { useState, useEffect } from "react";
 
 const features = [
   {
@@ -21,13 +22,41 @@ const features = [
   },
 ];
 
+const TYPEWRITER_TEXT = "TIM VUTHIN";
+
 function About() {
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer;
+
+    if (!isDeleting && displayText.length < TYPEWRITER_TEXT.length) {
+      timer = setTimeout(() => {
+        setDisplayText(TYPEWRITER_TEXT.substring(0, displayText.length + 1));
+      }, 150);
+    } else if (!isDeleting && displayText.length === TYPEWRITER_TEXT.length) {
+      timer = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && displayText.length > 0) {
+      timer = setTimeout(() => {
+        setDisplayText(TYPEWRITER_TEXT.substring(0, displayText.length - 1));
+      }, 100);
+    } else if (isDeleting && displayText.length === 0) {
+      timer = setTimeout(() => setIsDeleting(false), 500);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting]);
+
   return (
     <section className="about-modern-section" id="about">
       <div className="about-modern-heading">
-        <p className="eyebrow">GET TO KNOW ME</p>
+        <p className="eyebrow">ABOUT</p>
         <h2>
-          About <span>Me.</span>
+          <span className="about-typewriter" aria-label={TYPEWRITER_TEXT}>
+            <span className="about-typewriter-text">{displayText}</span>
+            <span className="cursor" aria-hidden="true">|</span>
+          </span>
         </h2>
         <div className="heading-rule" />
       </div>

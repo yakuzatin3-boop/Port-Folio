@@ -1,82 +1,106 @@
+import { useState, useEffect } from "react";
 import Button from "../components/Button";
 import profileImage from "../assets/image.png";
 import { socialLinks } from "../data/socialLinks";
-import { useState } from "react";
-import { useEffect } from "react";
+
+const TYPEWRITER_TEXT = "TIM VUTHIN";
+
 function Hero() {
-
-  const text = "TIM VUTHIN";
-
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let timer;
+    let timeoutId;
 
-    if (!isDeleting && displayText.length < text.length) {
-      timer = setTimeout(() => {
-        setDisplayText(text.substring(0, displayText.length + 1));
-      }, 150);
-    } else if (!isDeleting && displayText.length === text.length) {
-      timer = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2000);
-    } else if (isDeleting && displayText.length > 0) {
-      timer = setTimeout(() => {
-        setDisplayText(text.substring(0, displayText.length - 1));
-      }, 100);
-    } else if (isDeleting && displayText.length === 0) {
-      timer = setTimeout(() => {
-        setIsDeleting(false);
-      }, 500);
-    }
+    const handleTypewriter = () => {
+      if (!isDeleting) {
+        // Typing forward
+        if (displayText.length < TYPEWRITER_TEXT.length) {
+          setDisplayText(TYPEWRITER_TEXT.substring(0, displayText.length + 1));
+          timeoutId = setTimeout(handleTypewriter, 140);
+        } else {
+          // Pause at full word before deleting
+          timeoutId = setTimeout(() => setIsDeleting(true), 2200);
+        }
+      } else {
+        // Deleting backward
+        if (displayText.length > 0) {
+          setDisplayText(TYPEWRITER_TEXT.substring(0, displayText.length - 1));
+          timeoutId = setTimeout(handleTypewriter, 80);
+        } else {
+          // Pause before restarting
+          setIsDeleting(false);
+          timeoutId = setTimeout(handleTypewriter, 400);
+        }
+      }
+    };
 
-    return () => clearTimeout(timer);
+    timeoutId = setTimeout(handleTypewriter, 140);
+
+    return () => clearTimeout(timeoutId);
   }, [displayText, isDeleting]);
 
   return (
     <section className="hero-section" id="top">
       <div className="hero-copy">
         <p className="eyebrow reveal-item">
-          👋 HELLO, I&apos;M
+          <span className="hero-status-dot" /> AVAILABLE FOR NEW PROJECTS
         </p>
+
         <h1 className="hero-title reveal-item">
-          <span className="typewriter-name">
+          <span className="typewriter-name" aria-label={TYPEWRITER_TEXT}>
             {displayText}
-            <span className="cursor">|</span>
+            <span className="cursor" aria-hidden="true">|</span>
           </span>
           <br />
-          <em>FULL STACK</em>
+          <em>FULL-STACK</em>
           <br />
           DEVELOPER
         </h1>
+
         <p className="hero-intro reveal-item">
-          I build modern web applications and digital experiences with clean,
-          scalable, and beautiful code.
+          Hi, I'm Vuthin. As a senior web developer, I focus on building robust, high-performance web applications while constantly pushing my boundaries with modern frameworks and system designs.
         </p>
+
         <div className="hero-actions reveal-item">
           <Button>View projects</Button>
           <a className="cv-button" href="/CV%20vuthin.pdf" download>
             Download CV <span>↓</span>
           </a>
         </div>
+
+        <div className="hero-proof reveal-item">
+          <div>
+            <b>02+</b>
+            <span>Years of experience</span>
+          </div>
+          <div>
+            <b>Full-Stack</b>
+            <span>Architecting REST APIs & Modern UIs</span>
+          </div>
+        </div>
+
         <div className="hero-socials reveal-item">
-          {socialLinks.filter((link) => link.label !== "Email").map((link) => (
-            <a
-              href={link.href}
-              key={link.label}
-              target={link.label === "Email" ? undefined : "_blank"}
-              rel="noreferrer"
-            >
-              {link.label} <span>↗</span>
-            </a>
-          ))}
+          {socialLinks
+            ?.filter((link) => link.label !== "Email")
+            .map((link) => (
+              <a
+                href={link.href}
+                key={link.label}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {link.label} <span>↗</span>
+              </a>
+            ))}
         </div>
       </div>
+
       <div className="hero-profile">
         <div className="hero-profile-frame">
-          <img src={profileImage} alt="Vuthin in a black-and-white portrait" />
+          <img src={profileImage} alt="Tim Vuthin portrait" />
           <span className="profile-frame-label">TIM VUTHIN</span>
+          <span className="profile-frame-index">01 / 01</span>
         </div>
         <span className="hero-profile-caption">
           IT INSTRUCTOR / DEVELOPER
@@ -84,6 +108,7 @@ function Hero() {
           <b>BUILD / TEACH / CREATE</b>
         </span>
       </div>
+
       <div className="scroll-note">
         <span className="scroll-line" /> SCROLL TO DISCOVER
       </div>
