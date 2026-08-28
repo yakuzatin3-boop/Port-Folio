@@ -37,6 +37,15 @@
 .site-nav { margin: 0 auto; max-width: 1240px; padding: 0 48px; }
 .site-nav .brand-mark { display: none; }
 .nav-actions { align-items: center; display: flex; gap: 14px; }
+.facebook-login-wrap { position: relative; }
+.facebook-login, .facebook-profile button { background: #1877f2; border: 0; color: #fff; cursor: pointer; font: 600 10px 'Manrope', sans-serif; padding: 10px 12px; white-space: nowrap; }
+.facebook-login:hover, .facebook-profile button:hover { background: #0d65d9; }
+.facebook-login:disabled { cursor: not-allowed; opacity: .55; }
+.facebook-login-status { background: var(--card); border: 1px solid var(--line); color: var(--muted); font: 10px 'Manrope', sans-serif; padding: 8px; position: absolute; right: 0; top: calc(100% + 8px); width: 190px; z-index: 6; }
+.facebook-profile { align-items: center; display: flex; gap: 7px; }
+.facebook-profile img { border-radius: 50%; height: 25px; object-fit: cover; width: 25px; }
+.facebook-profile span { color: var(--ink); font: 600 10px 'Manrope', sans-serif; max-width: 95px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.facebook-profile button { font-size: 9px; padding: 7px 8px; }
 .theme-toggle { align-items: center; background: transparent; border: 1px solid var(--line); color: var(--ink); cursor: pointer; display: flex; height: 36px; justify-content: center; transition: background .2s ease, border-color .2s ease, color .2s ease; width: 36px; }
 .theme-toggle:hover { background: var(--acid); border-color: var(--acid); color: var(--deep); }
 .theme-light { --ink: #172019; --muted: #59665d; --line: rgba(23, 32, 25, .18); --deep: #f4f6ef; }
@@ -123,6 +132,8 @@
 	.site-nav { position: relative; }
 	.site-nav .nav-actions { margin-left: auto; margin-right: 8px; }
 	.site-nav .nav-contact { display: none; }
+	.facebook-login, .facebook-profile button { font-size: 9px; padding: 8px 9px; }
+	.facebook-profile span { display: none; }
 	.mobile-menu-toggle { align-items: center; background: transparent; border: 1px solid var(--line); color: var(--ink); cursor: pointer; display: flex; height: 36px; justify-content: center; padding: 0; width: 36px; }
 	.mobile-menu-toggle:hover { background: var(--acid); border-color: var(--acid); color: var(--deep); }
 	.mobile-navigation { background: var(--card); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 0; left: 22px; opacity: 0; padding: 8px; pointer-events: none; position: absolute; right: 22px; top: 68px; transform: translateY(-8px); transition: opacity .2s ease, transform .2s ease; visibility: hidden; z-index: 5; }

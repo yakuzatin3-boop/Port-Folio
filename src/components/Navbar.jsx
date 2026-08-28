@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import FacebookLogin from "./FacebookLogin";
 
 function Navbar({ theme, onThemeToggle }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ function Navbar({ theme, onThemeToggle }) {
       <div className="nav-links">
         <a href="#top" onClick={closeMenu}>Home</a><a href="#about" onClick={closeMenu}>About</a><a href="#stack" onClick={closeMenu}>Skills</a><a href="#projects" onClick={closeMenu}>Projects</a><a href="#contact" onClick={closeMenu}>Contact</a>
       </div>
-      <div className="nav-actions"><ThemeToggle theme={theme} onToggle={onThemeToggle} /><a className="nav-contact" href="mailto:yakuzatin03@gmail.com">Let&apos;s talk <span>↗</span></a></div>
+      <div className="nav-actions"><ThemeToggle theme={theme} onToggle={onThemeToggle} /><FacebookLogin /><a className="nav-contact" href="mailto:yakuzatin03@gmail.com">Let&apos;s talk <span>↗</span></a></div>
       <button className="mobile-menu-toggle" type="button" onClick={() => setIsMenuOpen((open) => !open)} aria-expanded={isMenuOpen} aria-controls="mobile-navigation" aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}>
         {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
