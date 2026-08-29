@@ -3,24 +3,24 @@ import "./Services.css";
 
 const services = [
   {
-    label: "USER SECURITY",
-    title: ["Authentication", "and", "access control"],
-    description: "Implement robust authentication systems and fine-grained access controls to protect user accounts, secure sessions, and restrict sensitive features.",
+    label: "FRONTEND",
+    title: ["React", "UI Development"],
+    description: "Build interactive and responsive user interfaces with React, creating seamless experiences that work perfectly on all devices.",
   },
   {
-    label: "SYSTEM INTEGRATION",
-    title: ["RESTful API", "development"],
-    description: "Design and build scalable REST APIs that seamlessly connect applications, manage data flow, and enable secure communication between systems.",
+    label: "BACKEND",
+    title: ["Node.js", "API Development"],
+    description: "Design scalable server-side solutions and robust APIs using Node.js, handling complex business logic and data management efficiently.",
   },
   {
-    label: "AUTOMATION",
-    title: ["Telegram bot", "development"],
-    description: "Create intelligent Telegram bots that automate notifications, handle routine tasks, and streamline business workflows for improved efficiency.",
+    label: "INTEGRATIONS",
+    title: ["Payment", "and Bot Systems"],
+    description: "Implement payment solutions like KHQR and Bakong, plus intelligent Telegram bots for automation and business process optimization.",
   },
   {
-    label: "PAYMENTS",
-    title: ["Bakong KHQR", "payments"],
-    description: "Integrate secure payment solutions using KHQR and Bakong, enabling smooth and reliable transactions for your customers.",
+    label: "DATABASE",
+    title: ["Data Management", "and Architecture"],
+    description: "Design efficient database schemas and implement secure data storage solutions that scale with your application growth.",
   },
 ];
 
@@ -32,7 +32,7 @@ function Services() {
         <h2 className="services-heading">
           I build
           <br />
-          <span>simple systems.</span>
+          <span>the project.</span>
         </h2>
         <div className="service-list">
           {services.map((service) => (
