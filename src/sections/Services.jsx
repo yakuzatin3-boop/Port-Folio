@@ -1,25 +1,26 @@
 import SectionTitle from "../components/SectionTitle";
+import "./Services.css";
 
 const services = [
   {
     label: "USER SECURITY",
     title: ["Authentication", "and", "access control"],
-    description: "Create secure login and permission systems that protect accounts, sessions, and sensitive features across your platform.",
+    description: "Implement robust authentication systems and fine-grained access controls to protect user accounts, secure sessions, and restrict sensitive features.",
   },
   {
     label: "SYSTEM INTEGRATION",
     title: ["RESTful API", "development"],
-    description: "Reliable APIs that connect your apps and data in a smooth, secure, and scalable way.",
+    description: "Design and build scalable REST APIs that seamlessly connect applications, manage data flow, and enable secure communication between systems.",
   },
   {
     label: "AUTOMATION",
-    title: ["Telegram bot"],
-    description: "Useful bots that send updates, handle tasks, and keep business processes moving.",
+    title: ["Telegram bot", "development"],
+    description: "Create intelligent Telegram bots that automate notifications, handle routine tasks, and streamline business workflows for improved efficiency.",
   },
   {
     label: "PAYMENTS",
     title: ["Bakong KHQR", "payments"],
-    description: "Simple payment flows for fast and trusted transactions using KHQR and Bakong.",
+    description: "Integrate secure payment solutions using KHQR and Bakong, enabling smooth and reliable transactions for your customers.",
   },
 ];
 
