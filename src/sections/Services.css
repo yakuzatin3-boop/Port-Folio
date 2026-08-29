@@ -7,11 +7,11 @@
 
 .services-heading {
   font-size: clamp(42px, 5.5vw, 82px);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.065em;
   line-height: 1;
   margin: 0 0 50px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .services-heading span {
@@ -31,12 +31,18 @@
   display: grid;
   gap: 24px;
   grid-template-columns: 90px minmax(0, 1fr);
-  padding: 32px 0;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.04) 0%, rgba(56, 189, 248, 0.02) 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
 }
 
 .service-item:hover {
   transform: translateX(8px);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(56, 189, 248, 0.04) 100%);
+  border-color: rgba(56, 189, 248, 0.25);
 }
 
 .service-header {
@@ -52,13 +58,13 @@
   font-size: clamp(9px, 0.8vw, 11px);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .service-arrow {
   color: var(--acid);
   font-size: clamp(18px, 2.2vw, 24px);
-  font-weight: 400;
+  font-weight: 700;
   text-align: left;
   transition: transform 0.25s ease;
 }
@@ -76,11 +82,12 @@
   flex-wrap: wrap;
   gap: 10px;
   font-size: clamp(24px, 3.2vw, 36px);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1.2;
   margin: 0 0 16px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--acid);
 }
 
 .service-title-line {
@@ -94,7 +101,7 @@
   margin: 0;
   max-width: 550px;
   font-family: 'Manrope', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* Laptop/Desktop (1024px and above) */
@@ -105,13 +112,14 @@
   }
 
   .services-heading {
-    font-size: 78px;
+    font-size: 82px;
   }
 
   .service-item {
     grid-template-columns: 90px minmax(0, 1fr);
     gap: 28px;
-    padding: 36px 0;
+    padding: 36px;
+    margin-bottom: 18px;
   }
 
   .service-label {
@@ -147,7 +155,8 @@
   .service-item {
     grid-template-columns: 75px minmax(0, 1fr);
     gap: 20px;
-    padding: 28px 0;
+    padding: 28px;
+    margin-bottom: 14px;
   }
 
   .service-label {
@@ -193,7 +202,8 @@
   .service-item {
     grid-template-columns: 60px minmax(0, 1fr);
     gap: 16px;
-    padding: 24px 0;
+    padding: 24px;
+    margin-bottom: 12px;
   }
 
   .service-header {
@@ -218,6 +228,7 @@
   .service-description {
     font-size: clamp(13px, 1.2vw, 14px);
     line-height: 1.65;
+    font-weight: 500;
   }
 }
 
@@ -239,7 +250,8 @@
   .service-item {
     grid-template-columns: 50px minmax(0, 1fr);
     gap: 12px;
-    padding: 20px 0;
+    padding: 20px;
+    margin-bottom: 10px;
   }
 
   .service-header {
@@ -265,6 +277,7 @@
   .service-description {
     font-size: clamp(12px, 1.1vw, 13px);
     line-height: 1.6;
+    font-weight: 500;
   }
 }
 
