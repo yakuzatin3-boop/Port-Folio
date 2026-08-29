@@ -57,9 +57,6 @@ function Hero() {
   return (
     <section className="hero-section" id="top">
       <div className="hero-copy">
-        <p className="eyebrow reveal-item">
-          <span className="hero-status-dot" /> AVAILABLE FOR NEW PROJECTS
-        </p>
 
         <h1 className="hero-title reveal-item">
           <span className="typewriter-name" aria-label={TYPEWRITER_TEXT}>
@@ -85,12 +82,12 @@ function Hero() {
 
         <div className="hero-proof reveal-item">
           <div>
-            <b>02+</b>
-            <span>Years of experience</span>
+            <strong>Designing clean interfaces</strong>
+            <span>UI systems focused on clarity and speed</span>
           </div>
           <div>
-            <b>Full-Stack</b>
-            <span>Architecting REST APIs & Modern UIs</span>
+            <strong>Building reliable systems</strong>
+            <span>REST APIs and modern web experiences</span>
           </div>
         </div>
 
@@ -114,7 +111,6 @@ function Hero() {
         <div className="hero-profile-frame">
           <img src={activeImage} alt="Tim Vuthin portrait" />
           <span className="profile-frame-label">TIM VUTHIN</span>
-          <span className="profile-frame-index">0{activeImageIndex + 1} / {HERO_IMAGES.length}</span>
         </div>
         <span className="hero-profile-caption">
           IT INSTRUCTOR / DEVELOPER

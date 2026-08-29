@@ -34,7 +34,7 @@ function Education() {
 
   return (
     <section className="education-section section-grid" id="education">
-      <SectionTitle number="06">WORK</SectionTitle>
+      <SectionTitle>WORK</SectionTitle>
       <div className="education-content">
         <h2 className="education-heading">
           <span className="education-title-main">{displayText}<span className="cursor">|</span></span>

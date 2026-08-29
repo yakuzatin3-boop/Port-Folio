@@ -14,17 +14,7 @@
   padding-left: 28px;
 }
 
-.project-number {
-  background: var(--acid);
-  color: var(--deep);
-  left: 8px;
-  padding: 5px 7px;
-  position: absolute;
-  top: 40px;
-  z-index: 1;
-}
-
-.project-preview {
+ .project-preview {
   background: #202820;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -87,11 +77,6 @@
     grid-row: 1;
     height: 190px;
     margin-bottom: 10px;
-  }
-
-  .project-number {
-    left: 8px;
-    top: 33px;
   }
 
   .project-details {
@@ -171,11 +156,6 @@
     grid-column: 1 / 4;
     height: auto;
     margin-bottom: 18px;
-  }
-
-  .project-number {
-    left: 14px;
-    top: 28px;
   }
 
   .project-details {

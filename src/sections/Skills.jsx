@@ -63,7 +63,7 @@ const skillColors = {
 function Skills() {
   return (
     <section className="stack-section section-grid" id="stack">
-      <SectionTitle number="02">MY TOOLKIT</SectionTitle>
+      <SectionTitle>MY TOOLKIT</SectionTitle>
       <div className="stack-content">
         <div className="stack-heading-row">
           <h2>

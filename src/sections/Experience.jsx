@@ -7,9 +7,8 @@ function Experience() {
       <SectionTitle number="05">EXPERIENCE</SectionTitle>
       <div className="experience-content">
         <h2>
-          <i>Learning by</i>
-          <br />
-          <span><i>doing :</i></span>
+          <span className="experience-lead">Learning by</span>
+          <span className="experience-accent">doing</span>
         </h2>
         <div className="experience-list">
           {experience.map((item) => (
