@@ -30,9 +30,7 @@ function Services() {
       <SectionTitle>WHAT I BUILD</SectionTitle>
       <div className="services-content">
         <h2 className="services-heading">
-          I build
-          <br />
-          <span>the project.</span>
+          <i><u>I build the project.</u></i>
         </h2>
         <div className="service-list">
           {services.map((service) => (
