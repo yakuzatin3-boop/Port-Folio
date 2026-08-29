@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import Button from "../components/Button";
 import profileImage from "../assets/image.png";
+import travelImageTwo from "../assets/IMG_5861.JPG";
+import travelImageThree from "../assets/IMG_6008.JPG";
 import { socialLinks } from "../data/socialLinks";
 
 const TYPEWRITER_TEXT = "TIM VUTHIN";
+const HERO_IMAGES = [profileImage, travelImageTwo, travelImageThree];
 
 function Hero() {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
     let timeoutId;
@@ -39,6 +43,16 @@ function Hero() {
 
     return () => clearTimeout(timeoutId);
   }, [displayText, isDeleting]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActiveImageIndex((currentIndex) => (currentIndex + 1) % HERO_IMAGES.length);
+    }, 3000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const activeImage = HERO_IMAGES[activeImageIndex];
 
   return (
     <section className="hero-section" id="top">
@@ -98,9 +112,9 @@ function Hero() {
 
       <div className="hero-profile">
         <div className="hero-profile-frame">
-          <img src={profileImage} alt="Tim Vuthin portrait" />
+          <img src={activeImage} alt="Tim Vuthin portrait" />
           <span className="profile-frame-label">TIM VUTHIN</span>
-          <span className="profile-frame-index">01 / 01</span>
+          <span className="profile-frame-index">0{activeImageIndex + 1} / {HERO_IMAGES.length}</span>
         </div>
         <span className="hero-profile-caption">
           IT INSTRUCTOR / DEVELOPER
