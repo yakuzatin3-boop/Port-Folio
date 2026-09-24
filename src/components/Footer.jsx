@@ -2,10 +2,10 @@ import { socialLinks } from "../data/socialLinks";
 
 function Footer() {
   return (
-    <footer className="site-footer p-10">
+    <footer className="site-footer">
       <span>© 2026 YAKUZ</span>
       <span>MADE WITH CURIOSITY / PHNOM PENH</span>
-      <div>
+      <div style={{ display: "flex", gap: "20px" }}>
         {socialLinks.map((link) => (
           <a
             href={link.href}

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { socialLinks } from "../data/socialLinks";
 import { useState } from "react";
 
@@ -22,70 +23,139 @@ const contactIconMap = {
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M21.12 4.05c.44-1.66-1.18-2.42-2.56-1.76L3.36 10.8c-1.33.62-1.3 2.46.04 3.04l4.2 1.4 1.64 4.98c.31 1.08 1.9 1.11 2.32.05l2.53-6.77 4.16 1.46c1.33.47 2.51-.95 1.87-2.16l-3.4-8.75Z" fill="currentColor" stroke="none" />
     </svg>
-  )
+  ),
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
 };
 
 function Contact() {
-  const contactLinks = socialLinks.filter((link) => ["Email", "GitHub", "Facebook", "Telegram"].includes(link.label));
+  const contactLinks = socialLinks.filter((link) =>
+    ["Email", "GitHub", "Facebook", "Telegram"].includes(link.label)
+  );
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((currentData) => ({ ...currentData, [name]: value }));
+    setFormData((d) => ({ ...d, [name]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("B slanh Soy!");
-
-    const telegramMessage = "B slanh Soy!";
-    window.location.href = `https://t.me/Vuthin007?text=${encodeURIComponent(telegramMessage)}`;
-  };
-
-  const handleSendAutoMessage = () => {
-    const telegramMessage = "B slanh Soy!";
-    window.location.href = `https://t.me/Vuthin007?text=${encodeURIComponent(telegramMessage)}`;
+    const telegramMessage = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`;
+    setSubmitted(true);
+    setTimeout(() => {
+      window.location.href = `https://t.me/Vuthin007?text=${encodeURIComponent(telegramMessage)}`;
+    }, 600);
   };
 
   return (
     <section className="contact-section" id="contact">
-      <p className="eyebrow">HAVE A PROJECT IN MIND?</p>
-      <h2>Let&apos;s make something<br /><em>meaningful.</em></h2>
-      <div className="contact-links">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6 }}
+      >
+        <p className="eyebrow">HAVE A PROJECT IN MIND?</p>
+        <h2>Let&apos;s make something<br /><em>meaningful.</em></h2>
+      </motion.div>
+
+      <motion.div
+        className="contact-links"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+      >
         {contactLinks.map((link) => (
-          <a className="contact-link" href={link.href} key={link.label} target={link.label === "Email" ? undefined : "_blank"} rel="noreferrer">
-            <span className={`contact-icon ${link.label.toLowerCase()}`}>{contactIconMap[link.label]}</span>
+          <motion.a
+            className="contact-link"
+            href={link.href}
+            key={link.label}
+            target={link.label === "Email" ? undefined : "_blank"}
+            rel="noreferrer"
+            variants={cardVariant}
+            whileHover={{ y: -4, transition: { duration: 0.25 } }}
+          >
+            <span className={`contact-icon ${link.label.toLowerCase()}`}>
+              {contactIconMap[link.label]}
+            </span>
             <span className="contact-link-copy">
               <span>{link.label}</span>
-              <b>{link.label === "Email" ? "yakuzatin3@gmail.com" : link.href.replace("https://", "").replace("web.", "")}</b>
+              <b>
+                {link.label === "Email"
+                  ? "yakuzatin3@gmail.com"
+                  : link.href.replace("https://", "").replace("web.", "")}
+              </b>
             </span>
             <i>↗</i>
-          </a>
+          </motion.a>
         ))}
-      </div>
-      <form className="contact-form" onSubmit={handleSubmit}>
+      </motion.div>
+
+      <motion.form
+        className="contact-form"
+        onSubmit={handleSubmit}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         <div className="contact-form-row">
           <label>
             Name
-            <input name="name" type="text" value={formData.name} onChange={handleChange} placeholder="Your name" required />
+            <input
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your name"
+              required
+            />
           </label>
           <label>
             Email
-            <input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required />
+            <input
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="you@example.com"
+              required
+            />
           </label>
         </div>
         <label>
           Message
-          <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project" rows="6" required />
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Tell me about your project"
+            rows="6"
+            required
+          />
         </label>
         <div className="contact-submit-group">
-          <button className="contact-submit" type="submit">
-            <span>Contact Message</span>
+          <button
+            className="contact-submit"
+            type="submit"
+            style={submitted ? { opacity: 0.7, pointerEvents: "none" } : {}}
+          >
+            <span>{submitted ? "Sending..." : "Send Message"}</span>
             <span className="contact-submit-icon">↗</span>
           </button>
-          
         </div>
-      </form>
+      </motion.form>
     </section>
   );
 }

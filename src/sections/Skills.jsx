@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import SectionTitle from "../components/SectionTitle";
 import { skills } from "../data/skills";
 import {
@@ -60,21 +61,49 @@ const skillColors = {
   Postman: ["#FF6C37", "rgba(255, 108, 55, .14)"],
 };
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.04 } },
+};
+
+const pillVariant = {
+  hidden: { opacity: 0, y: 16, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+};
+
 function Skills() {
   return (
-    <section className="stack-section section-grid" id="stack">
+    <section className="section-grid" id="stack">
       <SectionTitle>MY TOOLKIT</SectionTitle>
       <div className="stack-content">
-        <div className="stack-heading-row">
+        <motion.div
+          className="stack-heading-row"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h2>
             The stack
             <br />
-            <span>behind the work.</span>
+            <span className="accent">behind the work.</span>
           </h2>
-        </div>
-        <div className="skills-list">
+        </motion.div>
+
+        <motion.div
+          className="skills-list"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
           {skills.map((skill) => (
-            <span className="skill-pill" key={skill}>
+            <motion.span
+              className="skill-pill"
+              key={skill}
+              variants={pillVariant}
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            >
               <span
                 className="skill-icon"
                 style={{
@@ -88,9 +117,9 @@ function Skills() {
                 })()}
               </span>
               {skill}
-            </span>
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import Sparkles from "../components/Sparkles";
-import CursorGlow from "../components/CursorGlow";
+import Sparkles from "../page/Sparkles";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import Hero from "../sections/Hero";
@@ -14,34 +13,41 @@ import Education from "../sections/Education";
 import Contact from "../sections/Contact";
 
 function Home() {
-  const [theme, setTheme] = useState(() => localStorage.getItem("portfolio-theme") || "dark");
-  const handleThemeToggle = () => setTheme((currentTheme) => {
-    const nextTheme = currentTheme === "dark" ? "light" : "dark";
-    localStorage.setItem("portfolio-theme", nextTheme);
-    return nextTheme;
-  });
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("portfolio-theme") || "dark"
+  );
+
+  const handleThemeToggle = () =>
+    setTheme((current) => {
+      const next = current === "dark" ? "light" : "dark";
+      localStorage.setItem("portfolio-theme", next);
+      return next;
+    });
 
   return (
     <div className={`portfolio-shell ${theme === "light" ? "theme-light" : "theme-dark"}`}>
       <Sparkles />
       <div className="page-glow page-glow-top" />
-      <CursorGlow />
+      <div className="page-glow page-glow-side" aria-hidden="true" />
+
       <div className="relative z-10">
         <Navbar theme={theme} onThemeToggle={handleThemeToggle} />
-        <main className="site-main p-10">
-          <Hero />
-          <About />
-          <Skills />
-          <Services />
-          <Projects />
-          <Experience />
-          <Education />
-          <Contact />
-        </main>
-        <div className="p-10">
+        <main>
+          <div className="portfolio-content">
+            <Hero />
+            <About />
+            <Skills />
+            <Services />
+            <Projects />
+            <Experience />
+            <Education />
+            <Contact />
+          </div>
+          <div className="portfolio-content">
             <Footer />
+          </div>
+        </main>
         <ScrollToTop />
-        </div>
       </div>
     </div>
   );

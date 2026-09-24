@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 function Sparkles() {
   const stars = useMemo(() => {
