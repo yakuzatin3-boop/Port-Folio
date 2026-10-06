@@ -1,1 +1,0 @@
-export const skills = ["Laravel", "Express", "NestJS", "React.jsx", "MySQL", "MongoDB", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Bootstrap", "Flutter", "C/C++", "Git", "GitHub", "VS Code", "Postman", ];

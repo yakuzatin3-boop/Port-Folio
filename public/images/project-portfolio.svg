@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none">
+  <rect width="1200" height="750" fill="#111111"/>
+  <rect x="0.5" y="0.5" width="1199" height="749" stroke="rgba(255,255,255,0.08)"/>
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M0 600H1200M160 0V750M320 0V750M480 0V750M640 0V750M800 0V750M960 0V750M1120 0V750"/>
+  </g>
+  <circle cx="1040" cy="90" r="180" fill="rgba(163,230,53,0.1)" />
+  <rect x="48" y="44" width="1104" height="54" rx="27" fill="rgba(22,22,22,0.9)" stroke="rgba(255,255,255,0.08)"/>
+  <text x="80" y="77" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#F5F5F2">VUTHIN<tspan fill="#A3E635">.</tspan></text>
+  <g fill="rgba(138,138,133,0.9)" font-family="monospace" font-size="13" letter-spacing="2">
+    <text x="560" y="76">HOME</text><text x="640" y="76">ABOUT</text><text x="726" y="76">SKILLS</text><text x="812" y="76">PROJECTS</text>
+  </g>
+  <rect x="1010" y="58" width="118" height="28" rx="14" fill="#A3E635"/>
+  <text x="1032" y="77" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0A0A">LET'S TALK</text>
+  <rect x="48" y="150" width="640" height="96" rx="8" fill="#F5F5F2"/>
+  <rect x="48" y="266" width="420" height="96" rx="8" fill="rgba(245,245,242,0.14)"/>
+  <rect x="48" y="386" width="560" height="24" rx="12" fill="rgba(245,245,242,0.25)"/>
+  <rect x="48" y="426" width="470" height="24" rx="12" fill="rgba(245,245,242,0.14)"/>
+  <rect x="48" y="492" width="220" height="56" rx="28" fill="#A3E635"/>
+  <rect x="284" y="492" width="200" height="56" rx="28" fill="none" stroke="rgba(255,255,255,0.22)"/>
+  <rect x="760" y="150" width="392" height="398" rx="24" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="792" y="182" width="328" height="230" rx="16" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="956" cy="278" r="62" fill="rgba(163,230,53,0.2)"/>
+  <circle cx="956" cy="256" r="26" fill="rgba(245,245,242,0.6)"/>
+  <path d="M914 322c8-24 24-36 42-36s34 12 42 36" fill="rgba(245,245,242,0.6)"/>
+  <rect x="792" y="440" width="200" height="18" rx="9" fill="rgba(245,245,242,0.6)"/>
+  <rect x="792" y="474" width="280" height="14" rx="7" fill="rgba(138,138,133,0.8)"/>
+  <rect x="792" y="504" width="140" height="28" rx="14" fill="rgba(163,230,53,0.18)" stroke="rgba(163,230,53,0.4)"/>
+  <rect x="48" y="600" width="1104" height="106" rx="18" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
+  <g fill="rgba(245,245,242,0.16)">
+    <rect x="80" y="632" width="180" height="16" rx="8"/>
+    <rect x="300" y="632" width="140" height="16" rx="8"/>
+    <rect x="480" y="632" width="200" height="16" rx="8"/>
+    <rect x="720" y="632" width="160" height="16" rx="8"/>
+    <rect x="920" y="632" width="180" height="16" rx="8"/>
+    <rect x="80" y="668" width="140" height="14" rx="7"/>
+    <rect x="300" y="668" width="190" height="14" rx="7"/>
+    <rect x="530" y="668" width="130" height="14" rx="7"/>
+    <rect x="700" y="668" width="210" height="14" rx="7"/>
+    <rect x="950" y="668" width="120" height="14" rx="7"/>
+  </g>
+  <text x="48" y="740" font-family="monospace" font-size="16" letter-spacing="4" fill="rgba(138,138,133,0.7)">REACT · NEXT.JS · TAILWIND · FLUTTER</text>
+</svg>

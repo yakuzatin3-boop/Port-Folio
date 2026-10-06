@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none">
+  <rect width="1200" height="750" fill="#111111"/>
+  <rect x="0.5" y="0.5" width="1199" height="749" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="48" y="44" width="1104" height="54" rx="12" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="80" cy="71" r="6" fill="#A3E635"/>
+  <rect x="100" y="64" width="118" height="14" rx="7" fill="rgba(245,245,242,0.5)"/>
+  <rect x="880" y="60" width="70" height="22" rx="11" fill="rgba(163,230,53,0.15)"/>
+  <rect x="964" y="60" width="70" height="22" rx="11" fill="rgba(255,255,255,0.06)"/>
+  <rect x="1048" y="60" width="76" height="22" rx="11" fill="#A3E635"/>
+  <rect x="48" y="128" width="348" height="248" rx="18" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="72" y="152" width="300" height="120" rx="12" fill="rgba(255,255,255,0.05)"/>
+  <rect x="72" y="288" width="180" height="14" rx="7" fill="rgba(245,245,242,0.55)"/>
+  <rect x="72" y="314" width="96" height="20" rx="10" fill="#A3E635"/>
+  <rect x="424" y="128" width="348" height="248" rx="18" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="448" y="152" width="300" height="120" rx="12" fill="rgba(255,255,255,0.05)"/>
+  <rect x="448" y="288" width="150" height="14" rx="7" fill="rgba(245,245,242,0.55)"/>
+  <rect x="448" y="314" width="96" height="20" rx="10" fill="rgba(255,255,255,0.1)"/>
+  <rect x="800" y="128" width="352" height="248" rx="18" fill="#161616" stroke="rgba(163,230,53,0.35)"/>
+  <rect x="824" y="152" width="120" height="120" rx="12" fill="#0A0A0A" stroke="rgba(163,230,53,0.35)"/>
+  <g fill="#A3E635">
+    <rect x="840" y="168" width="24" height="24" rx="4"/><rect x="872" y="168" width="24" height="24" rx="4"/>
+    <rect x="904" y="168" width="24" height="24" rx="4"/><rect x="840" y="200" width="24" height="24" rx="4"/>
+    <rect x="888" y="196" width="32" height="32" rx="4" fill="#0A0A0A"/>
+    <rect x="872" y="232" width="24" height="24" rx="4"/><rect x="904" y="232" width="24" height="24" rx="4"/>
+    <rect x="840" y="248" width="24" height="8" rx="4"/>
+  </g>
+  <rect x="964" y="156" width="140" height="14" rx="7" fill="rgba(245,245,242,0.55)"/>
+  <rect x="964" y="184" width="100" height="12" rx="6" fill="rgba(138,138,133,0.6)"/>
+  <rect x="964" y="240" width="112" height="34" rx="17" fill="#A3E635"/>
+  <rect x="48" y="412" width="1104" height="1" fill="rgba(255,255,255,0.08)"/>
+  <rect x="48" y="452" width="660" height="18" rx="9" fill="rgba(245,245,242,0.4)"/>
+  <rect x="48" y="490" width="520" height="18" rx="9" fill="rgba(245,245,242,0.22)"/>
+  <rect x="48" y="528" width="580" height="18" rx="9" fill="rgba(245,245,242,0.22)"/>
+  <rect x="48" y="596" width="200" height="44" rx="22" fill="#A3E635"/>
+  <rect x="264" y="596" width="180" height="44" rx="22" fill="none" stroke="rgba(255,255,255,0.16)"/>
+  <rect x="760" y="440" width="392" height="200" rx="18" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="784" y="464" width="140" height="12" rx="6" fill="rgba(138,138,133,0.8)"/>
+  <path d="M784 600 L844 572 L904 586 L964 534 L1024 548 L1084 500 L1128 512" stroke="#A3E635" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="rgba(245,245,242,0.18)">
+    <rect x="784" y="616" width="344" height="6" rx="3"/>
+  </g>
+  <text x="48" y="704" font-family="monospace" font-size="18" letter-spacing="4" fill="rgba(138,138,133,0.75)">NESTJS · EXPRESS · JWT · KHQR · TELEGRAM</text>
+</svg>
