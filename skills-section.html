@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>The Stack — Skills</title>
+
+  <!-- Fonts: Anton (display) · Instrument Serif italic (accent) · JetBrains Mono (labels) · Inter Tight (card titles) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@1&family=Inter+Tight:wght@700;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ============================================================
+       1. TOKENS
+       ============================================================ */
+    :root {
+      --bg: #f4f6f1;              /* off-white (between #f1f4f4 and #f5f6f0) */
+      --card: #ffffff;
+      --ink: #0b1220;             /* near-black navy */
+      --muted: #6d766e;
+      --green: #5fa313;           /* accent green  */
+      --teal: #0e7c86;            /* eyebrow teal  */
+      --chip: #ebebe6;            /* chip tile background */
+      --line: rgba(11, 18, 32, 0.08);
+
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      --display: "Anton", "Arial Narrow", sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================================
+       2. BASE + BACKGROUND (grid texture + corner glow)
+       ============================================================ */
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    /* faint topographic-ish grid texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(11, 18, 32, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(11, 18, 32, 0.04) 1px, transparent 1px);
+      background-size: 34px 34px;
+      -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 30%, transparent 90%);
+              mask-image: radial-gradient(120% 90% at 50% 0%, #000 30%, transparent 90%);
+    }
+
+    /* soft green/teal radial glow in the top-right corner */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(55vw 45vh at 100% 0%, rgba(14, 124, 134, 0.16), transparent 62%),
+        radial-gradient(40vw 36vh at 92% 6%, rgba(95, 163, 19, 0.16), transparent 60%),
+        radial-gradient(50vw 40vh at 0% 100%, rgba(95, 163, 19, 0.07), transparent 65%);
+    }
+
+    /* ============================================================
+       3. LAYOUT SHELL
+       ============================================================ */
+    .section {
+      position: relative;
+      z-index: 1;
+      width: min(1240px, 100% - 40px);
+      margin-inline: auto;
+      padding: clamp(56px, 9vh, 110px) 0 clamp(72px, 12vh, 140px);
+    }
+
+    /* ============================================================
+       4. HEADER (title + subtitle + filter bar)
+       ============================================================ */
+    .head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px 36px;
+      margin-bottom: clamp(32px, 5vw, 52px);
+    }
+
+    .title {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(3rem, 8.5vw, 6.75rem);
+      line-height: 0.92;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .title .accent {
+      display: inline-block;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.1em;          /* accent sits larger than the sans text */
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 62ch;
+      font-family: var(--mono);
+      font-size: clamp(10px, 1.1vw, 12px);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* pill filter bar */
+    .filters {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 6px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: 0 18px 36px -28px rgba(11, 18, 32, 0.55);
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+
+    .filter {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #4b534d;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.25s var(--ease), background-color 0.25s var(--ease),
+        box-shadow 0.25s var(--ease);
+    }
+    .filter:hover { color: var(--ink); }
+    .filter:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+    .filter.is-active {
+      background: var(--green);
+      color: #ffffff;
+      box-shadow: 0 10px 22px -12px rgba(95, 163, 19, 0.85);
+    }
+
+    /* ============================================================
+       5. CATEGORY CARD GRID (2 cols desktop / 1 col mobile)
+       ============================================================ */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(16px, 2.2vw, 24px);
+    }
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(11, 18, 32, 0.07);
+      border-radius: 28px;
+      padding: clamp(22px, 3vw, 34px);
+      box-shadow: 0 34px 54px -44px rgba(11, 18, 32, 0.55);
+      transition:
+        opacity 0.7s var(--ease),
+        transform 0.7s var(--ease),
+        box-shadow 0.35s var(--ease);
+    }
+    .card:hover { box-shadow: 0 40px 60px -42px rgba(11, 18, 32, 0.5); }
+
+    /* scroll reveal (only when JS is available) */
+    .js .card { opacity: 0; transform: translateY(26px); }
+    .js .card.is-in { opacity: 1; transform: translateY(0); }
+
+    /* filter fade/scale */
+    .card.is-hidden {
+      opacity: 0 !important;
+      transform: scale(0.96) translateY(10px) !important;
+      pointer-events: none;
+    }
+    .card[hidden] { display: none; }
+
+    .card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .card__meta { display: flex; align-items: baseline; gap: 14px; min-width: 0; }
+
+    .card__num {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--green);
+    }
+
+    .card__eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--teal);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card__count {
+      flex: 0 0 auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: #6b7280;
+      background: #eff0eb;
+      border-radius: 999px;
+      padding: 7px 13px;
+    }
+
+    .card__title {
+      margin: 16px 0 22px;
+      font-family: var(--sans);
+      font-weight: 900;
+      font-size: clamp(1.4rem, 2.4vw, 1.95rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    /* ============================================================
+       6. SKILL CHIPS
+       ============================================================ */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      padding: 7px 16px 7px 7px;
+      background: var(--chip);
+      border-radius: 14px;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px -16px rgba(11, 18, 32, 0.55);
+    }
+
+    .chip__icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      flex: 0 0 auto;
+      transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+    .chip:hover .chip__icon {
+      filter: brightness(1.07) saturate(1.12);
+      transform: scale(1.04);
+    }
+
+    .chip__icon img {
+      display: block;
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .chip__fallback {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: #39413b;
+      text-transform: uppercase;
+    }
+
+    .chip__name {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #26302a;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       7. RESPONSIVE TOUCHES
+       ============================================================ */
+    @media (max-width: 720px) {
+      .head { align-items: flex-start; flex-direction: column; }
+      .filters { width: 100%; }
+      .filter { padding: 10px 14px; }
+      .chip__name { white-space: normal; }
+    }
+
+    /* ============================================================
+       8. REDUCED MOTION
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      .js .card,
+      .js .card.is-in,
+      .card.is-hidden {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .chip,
+      .chip__icon,
+      .filter { transition: none !important; }
+      .chip:hover { transform: none; }
+      .chip:hover .chip__icon { transform: none; }
+      /* filtering still works: hidden cards are removed from the flow */
+      .card.is-hidden { display: none; opacity: 0 !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="section">
+    <!-- Header: title left, filter bar right -->
+    <header class="head">
+      <div>
+        <h1 class="title">
+          The Stack <em class="accent">behind the work.</em>
+        </h1>
+        <p class="subtitle">
+          React · Next.js · Node.js · PostgreSQL — the tools behind every build
+        </p>
+      </div>
+
+      <div class="filters" role="tablist" aria-label="Filter skills by category" id="filters"></div>
+    </header>
+
+    <!-- Category cards are rendered here from the SKILLS data -->
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <script>
+    /* ============================================================
+       SKILLS DATA — edit this array to change your skills.
+       name     : label shown on the chip
+       category : "frontend" | "backend" | "database" | "tools"
+       icon     : full-colour logo URL (Devicon CDN) or "" for letter fallback
+       tint     : brand colour used for the pastel icon background
+       ============================================================ */
+    const SKILLS = [
+      /* 01 · Frontend & Mobile */
+      { name: "React.js",       category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",          tint: "#61DAFB" },
+      { name: "Next.js",        category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",         tint: "#0B0B0B" },
+      { name: "JavaScript",     category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", tint: "#F7DF1E" },
+      { name: "TypeScript",     category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", tint: "#3178C6" },
+      { name: "HTML5",          category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",            tint: "#E34F26" },
+      { name: "CSS3",           category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",              tint: "#1572B6" },
+      { name: "Tailwind CSS",   category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", tint: "#06B6D4" },
+      { name: "Bootstrap",      category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg",     tint: "#7952B3" },
+      { name: "Flutter (Dart)", category: "frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",         tint: "#0175C2" },
+
+      /* 02 · Backend */
+      { name: "Node.js",   category: "backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",   tint: "#5FA04E" },
+      { name: "Express.js", category: "backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", tint: "#0B0B0B" },
+      { name: "NestJS",    category: "backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",    tint: "#E0234E" },
+      { name: "Laravel",   category: "backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",  tint: "#FF2D20" },
+
+      /* 03 · Database */
+      { name: "MySQL",      category: "database", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",        tint: "#4479A1" },
+      { name: "PostgreSQL", category: "database", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", tint: "#4169E1" },
+      { name: "MongoDB",    category: "database", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",   tint: "#47A248" },
+
+      /* 04 · Tools */
+      { name: "C/C++",             category: "tools", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", tint: "#00599C" },
+      { name: "Git",               category: "tools", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",        tint: "#F05032" },
+      { name: "GitHub",            category: "tools", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",   tint: "#181717" },
+      { name: "VS Code",           category: "tools", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",   tint: "#007ACC" },
+      { name: "MySQL Workbench",   category: "tools", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",     tint: "#4479A1" },
+      { name: "Bakong KHQR API",   category: "tools", icon: "", tint: "#F97316" }, /* no CDN logo → first-letter fallback */
+      { name: "Postman",           category: "tools", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg", tint: "#FF6C37" },
+    ];
+
+    /* Categories drive the filter tabs and the cards. */
+    const CATEGORIES = [
+      { id: "frontend", index: "01", title: "Frontend & Mobile", eyebrow: "Interface" },
+      { id: "backend",  index: "02", title: "Backend",           eyebrow: "Server" },
+      { id: "database", index: "03", title: "Database",          eyebrow: "Data layer" },
+      { id: "tools",    index: "04", title: "Tools & Systems",   eyebrow: "Workflow" },
+    ];
+
+    const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const grid = document.getElementById("grid");
+    const filtersBar = document.getElementById("filters");
+
+    /* ---------- helpers ---------- */
+
+    /** "#RRGGBB" + alpha -> "rgba(r, g, b, a)" (pastel icon tint) */
+    function tintToRgba(hex, alpha) {
+      const n = parseInt(hex.replace("#", ""), 16);
+      const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    /** Icon box: full-colour logo, first-letter fallback if it fails to load. */
+    function buildIcon(skill) {
+      const box = document.createElement("span");
+      box.className = "chip__icon";
+      box.style.backgroundColor = tintToRgba(skill.tint, 0.17);
+      box.setAttribute("aria-hidden", "true");
+
+      const fallback = document.createElement("span");
+      fallback.className = "chip__fallback";
+      fallback.textContent = (skill.name.trim()[0] || "?").toUpperCase();
+
+      if (skill.icon) {
+        const img = new Image();
+        img.alt = "";
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.onerror = () => img.replaceWith(fallback);
+        img.src = skill.icon;
+        box.append(img);
+      } else {
+        box.append(fallback);
+      }
+      return box;
+    }
+
+    /** One chip: [tinted icon box] + [mono uppercase name] */
+    function buildChip(skill) {
+      const li = document.createElement("li");
+      li.className = "chip";
+
+      const name = document.createElement("span");
+      name.className = "chip__name";
+      name.textContent = skill.name;
+
+      li.append(buildIcon(skill), name);
+      return li;
+    }
+
+    /** One category card: number + eyebrow + count + title + chip list */
+    function buildCard(category, skills, position) {
+      const card = document.createElement("article");
+      card.className = "card";
+      card.dataset.category = category.id;
+      card.style.transitionDelay = REDUCED ? "0ms" : `${(position % 4) * 70}ms`;
+
+      const head = document.createElement("div");
+      head.className = "card__head";
+
+      const meta = document.createElement("div");
+      meta.className = "card__meta";
+
+      const num = document.createElement("span");
+      num.className = "card__num";
+      num.textContent = category.index;
+
+      const eyebrow = document.createElement("span");
+      eyebrow.className = "card__eyebrow";
+      eyebrow.textContent = category.eyebrow;
+
+      const count = document.createElement("span");
+      count.className = "card__count";
+      count.textContent = String(skills.length).padStart(2, "0");
+
+      const title = document.createElement("h3");
+      title.className = "card__title";
+      title.textContent = category.title;
+
+      const list = document.createElement("ul");
+      list.className = "chips";
+      skills.forEach((skill) => list.append(buildChip(skill)));
+
+      meta.append(num, eyebrow);
+      head.append(meta, count);
+      card.append(head, title, list);
+      return card;
+    }
+
+    /* ---------- render cards ---------- */
+    const cards = CATEGORIES.map((category, i) => {
+      const skills = SKILLS.filter((skill) => skill.category === category.id);
+      if (!skills.length) return null;
+      const card = buildCard(category, skills, i);
+      grid.append(card);
+      return card;
+    }).filter(Boolean);
+
+    /* ---------- render filter tabs ---------- */
+    const tabs = [{ id: "all", label: "All" }].concat(
+      CATEGORIES.map((c) => ({ id: c.id, label: c.id }))
+    );
+
+    tabs.forEach((tab) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "filter" + (tab.id === "all" ? " is-active" : "");
+      btn.dataset.filter = tab.id;
+      btn.setAttribute("role", "tab");
+      btn.setAttribute("aria-selected", tab.id === "all" ? "true" : "false");
+      btn.textContent = tab.label;
+      filtersBar.append(btn);
+    });
+
+    /* ---------- filtering (fade / scale, then remove from flow) ---------- */
+    let hideTimers = new WeakMap();
+
+    function applyFilter(id) {
+      cards.forEach((card) => {
+        const match = id === "all" || card.dataset.category === id;
+        const timer = hideTimers.get(card);
+        if (timer) { clearTimeout(timer); hideTimers.delete(card); }
+
+        if (match) {
+          card.hidden = false;
+          card.classList.add("is-hidden");     /* start faded, force reflow … */
+          void card.offsetWidth;
+          requestAnimationFrame(() => card.classList.remove("is-hidden"));
+        } else if (REDUCED) {
+          card.classList.add("is-hidden");
+          card.hidden = true;
+        } else {
+          card.classList.add("is-hidden");     /* fade/scale out first … */
+          const t = setTimeout(() => { if (card.classList.contains("is-hidden")) card.hidden = true; }, 320);
+          hideTimers.set(card, t);
+        }
+      });
+    }
+
+    filtersBar.addEventListener("click", (event) => {
+      const btn = event.target.closest(".filter");
+      if (!btn) return;
+
+      filtersBar.querySelectorAll(".filter").forEach((el) => {
+        const active = el === btn;
+        el.classList.toggle("is-active", active);
+        el.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      applyFilter(btn.dataset.filter);
+    });
+
+    /* ---------- scroll reveal (staggered) ---------- */
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+      );
+      cards.forEach((card) => io.observe(card));
+    } else {
+      cards.forEach((card) => card.classList.add("is-in"));
+    }
+
+    /* enable JS-only styles (progressive enhancement) */
+    document.documentElement.classList.remove("no-js");
+    document.documentElement.classList.add("js");
+  </script>
+</body>
+</html>

@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import LiveClock from "../ui/LiveClock";
 import StatusDot from "../ui/StatusDot";
+import BlackHoleScene from "../ui/BlackHoleScene";
 import { navLinks, profile } from "../../data/profile";
 import { socials } from "../../data/socials";
 import { scrollTo, scrollToTop } from "../../lib/lenis";
@@ -9,10 +11,24 @@ function ColumnTitle({ children }) {
   return <p className="mono-label mb-5 text-muted">{children}</p>;
 }
 
+const watermarkTextStyle = {
+  fontFamily: "var(--font-display)",
+  fontSize: "clamp(5rem,22vw,22rem)",
+  fontWeight: 700,
+  letterSpacing: "-0.05em",
+};
+
 export default function Footer() {
+  const watermarkRef = useRef(null);
+
   return (
     <footer className="relative overflow-hidden border-t border-line pb-8 pt-16 md:pt-24">
-      <div className="container-x">
+      {/* Full-footer black hole: the hole centers itself on the VUTHIN watermark */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <BlackHoleScene anchorRef={watermarkRef} className="absolute inset-0 h-full w-full" />
+      </div>
+
+      <div className="container-x relative">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <ColumnTitle>Sitemap</ColumnTitle>
@@ -81,17 +97,30 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="relative mt-16 md:mt-24">
-          <span
-            aria-hidden
-            className="block select-none text-center font-display text-[clamp(3.5rem,17vw,13rem)] font-bold uppercase leading-[0.8] tracking-[-0.05em]"
-            style={{
-              color: "color-mix(in srgb, var(--fg) 5%, transparent)",
-              WebkitTextStroke: "1px color-mix(in srgb, var(--fg) 22%, transparent)",
-            }}
+        <div
+          ref={watermarkRef}
+          className="footer-watermark relative mt-16 h-[calc(clamp(5rem,22vw,22rem)*0.8)] md:mt-24"
+        >
+          {/* Name sits on top of the scene: translucent dark fill keeps the
+              hole visible through the letters, white stroke keeps them readable */}
+          <svg
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full select-none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            VUTHIN
-          </span>
+            <text
+              x="50%"
+              y="50%"
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="rgba(10, 10, 10, 0.45)"
+              stroke="rgba(255, 255, 255, 0.5)"
+              strokeWidth="1.5"
+              style={watermarkTextStyle}
+            >
+              VUTHIN
+            </text>
+          </svg>
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-5 border-t border-line pt-6 text-center md:flex-row md:text-left">

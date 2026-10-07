@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 
 import GridBackground from "./components/layout/GridBackground";
-import Preloader from "./components/layout/Preloader";
+import BlackHoleLoader from "./components/layout/BlackHoleLoader";
 import CustomCursor from "./components/layout/CustomCursor";
 import ScrollProgress from "./components/layout/ScrollProgress";
 import BackToTop from "./components/layout/BackToTop";
@@ -33,9 +32,10 @@ function App() {
       <ScrollProgress />
       <CustomCursor />
 
-      <AnimatePresence>
-        {!ready && <Preloader key="preloader" onComplete={() => setReady(true)} />}
-      </AnimatePresence>
+      {/* Usage: simulates 0->100%, swallows the image, flashes, then reveals
+          the main content. Also accepts progress={n} to drive it yourself:
+          <BlackHoleLoader progress={p} onComplete={() => setLoading(false)} /> */}
+      {!ready && <BlackHoleLoader onComplete={() => setReady(true)} />}
 
       {ready && (
         <>

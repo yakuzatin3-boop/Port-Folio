@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Phone, Globe, Check, Loader2 } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import MagneticButton from "../ui/MagneticButton";
+import BlackHoleScene from "../ui/BlackHoleScene";
 import { profile } from "../../data/profile";
 import { socials } from "../../data/socials";
 import { EASE } from "../../lib/easing";
@@ -73,7 +74,14 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative section-pad scroll-mt-32 overflow-hidden border-t border-line">
-      <div className="container-x">
+      {/* Background: the black hole in full view behind the content */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 h-[min(88vw,82vh)] w-[min(88vw,82vh)] -translate-x-1/2 -translate-y-1/2 md:left-[58%]">
+          <BlackHoleScene className="absolute inset-0 h-full w-full" />
+        </div>
+      </div>
+
+      <div className="container-x relative">
         <SectionHeading index="05" label="CONTACT" line1="LET'S WORK" accent="together." />
 
         <div className="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-10">
@@ -191,7 +199,19 @@ export default function Contact() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative rounded-card border border-line bg-surface p-6 md:p-9">
+            <div className="group relative">
+              {/* Orbiting glow shadow: brightens on hover/focus, spins faster while sending */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-[6px] animate-bh-spin rounded-[30px] opacity-40 transition-opacity duration-500 group-focus-within:opacity-95"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, transparent 0deg, rgba(255,150,70,0.85) 70deg, rgba(139,92,246,0.8) 150deg, transparent 240deg, rgba(255,150,70,0.4) 330deg)",
+                  filter: "blur(26px)",
+                  ...(status === "sending" ? { animationDuration: "2.4s", opacity: 0.95 } : null),
+                }}
+              />
+              <div className="relative rounded-card border border-line bg-surface/70 p-6 shadow-[0_40px_100px_-55px_rgba(0,0,0,0.95)] backdrop-blur-xl backdrop-saturate-150 md:p-9">
               <AnimatePresence mode="wait">
                 {status === "success" ? (
                   <motion.div
@@ -301,6 +321,7 @@ export default function Contact() {
                   </motion.form>
                 )}
               </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
