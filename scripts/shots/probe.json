@@ -1,0 +1,414 @@
+{
+  "consoleErrors": [],
+  "failedRequests": [],
+  "badResponses": [],
+  "imageRequests": 22,
+  "layout": [
+    {
+      "i": 0,
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "fullstack-commerce-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 1,
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "school-management-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 2,
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "nuxt-admin-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 3,
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "nest-ai-python-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 4,
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "course-labs-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 5,
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "nest-api-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 6,
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "mongo-express-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 7,
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "laravel-blade-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 8,
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "tailwind-cli-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 9,
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "node-express-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    },
+    {
+      "i": 10,
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "imgW": 475,
+      "imgH": 356,
+      "imgLoaded": true,
+      "currentSrc": "express-shop-800.webp",
+      "objectFit": "cover",
+      "innerTransform": "none",
+      "wrapperOverflow": "hidden",
+      "wrapperRadius": "24px",
+      "wrapperBg": "rgb(17, 17, 17)"
+    }
+  ],
+  "corner": {
+    "cardRect": [
+      120,
+      97,
+      588,
+      705
+    ],
+    "hits": [
+      {
+        "el": "div.relative w-full transform-gpu transition-transform duration-500 ease-o",
+        "rect": [
+          0,
+          0,
+          588,
+          654
+        ],
+        "bg": "rgba(0, 0, 0, 0)",
+        "bgImage": "none",
+        "radius": "0px",
+        "z": "auto",
+        "opacity": "1",
+        "transform": "none"
+      },
+      {
+        "el": "div.relative aspect-[4/3] w-full overflow-hidden rounded-card border borde",
+        "rect": [
+          0,
+          0,
+          588,
+          441
+        ],
+        "bg": "rgb(17, 17, 17)",
+        "bgImage": "none",
+        "radius": "24px",
+        "z": "auto",
+        "opacity": "1",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "el": "img.absolute inset-0 h-full w-full object-cover",
+        "rect": [
+          1,
+          1,
+          586,
+          439
+        ],
+        "bg": "rgba(0, 0, 0, 0)",
+        "bgImage": "none",
+        "radius": "0px",
+        "z": "auto",
+        "opacity": "1",
+        "transform": "none"
+      },
+      {
+        "el": "picture.",
+        "rect": [
+          1,
+          1,
+          586,
+          439
+        ],
+        "bg": "rgba(0, 0, 0, 0)",
+        "bgImage": "none",
+        "radius": "0px",
+        "z": "auto",
+        "opacity": "1",
+        "transform": "matrix3d(1.04, 0, 0, 0, 0, 1.04, 0, 0, 0, 0, 1, 0,"
+      },
+      {
+        "el": "img.h-full w-full object-cover will-change-transform transition-opacity du",
+        "rect": [
+          1,
+          1,
+          586,
+          439
+        ],
+        "bg": "rgba(0, 0, 0, 0)",
+        "bgImage": "none",
+        "radius": "0px",
+        "z": "auto",
+        "opacity": "1",
+        "transform": "none"
+      },
+      {
+        "el": "div.pointer-events-none absolute inset-0 mix-blend-soft-light transition-o",
+        "rect": [
+          1,
+          1,
+          586,
+          439
+        ],
+        "bg": "rgba(0, 0, 0, 0)",
+        "bgImage": "radial-gradient(250px 200px, rgba(163, 230, 53, 0.25) 0%, rg",
+        "radius": "0px",
+        "z": "auto",
+        "opacity": "0",
+        "transform": "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,"
+      },
+      {
+        "el": "span.mono-label absolute left-4 top-4 rounded-full border border-line bg-gl",
+        "rect": [
+          16,
+          16,
+          42,
+          25
+        ],
+        "bg": "rgba(255, 255, 255, 0.04)",
+        "bgImage": "none",
+        "radius": "3.35544e+07px",
+        "z": "auto",
+        "opacity": "1",
+        "transform": "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,"
+      }
+    ],
+    "points": [
+      "div",
+      "a",
+      "div",
+      "div",
+      "section",
+      "main",
+      "div",
+      "body",
+      "html"
+    ],
+    "points8": [
+      "img",
+      "img",
+      "picture",
+      "div",
+      "div",
+      "a",
+      "div",
+      "div",
+      "section",
+      "main",
+      "div",
+      "body",
+      "html"
+    ]
+  },
+  "all43": true,
+  "allImagesLoaded": true,
+  "idle": {
+    "glareOpacity": "0",
+    "glareBlend": "soft-light",
+    "shadowOpacity": "0.3",
+    "arrowZ": "none",
+    "badgeZ": "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,",
+    "textZ": "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,"
+  },
+  "hovered": {
+    "glareOpacity": "0.5",
+    "glareBlend": "soft-light",
+    "shadowOpacity": "0.6",
+    "shadowBg": "radial-gradient(60% 100% at 50% 0%, rgba(163, 230, 53, 0.25) 0%, rgba(",
+    "innerTransform": "matrix3d(0.995965, -0.00778983, -0.0894049, 0, 0, 0.996226, -0.0868009",
+    "scale": "1.02",
+    "arrowZ": "matrix(1, 0, 0, 1, -5.02294, -6.22656)"
+  },
+  "cards390": [
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "fullstack-commerce-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "school-management-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "nuxt-admin-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "nest-ai-python-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "course-labs-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "nest-api-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "mongo-express-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "laravel-blade-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "tailwind-cli-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "node-express-800.webp"
+    },
+    {
+      "layoutW": 350,
+      "layoutH": 263,
+      "ratio": 1.3308,
+      "imgLoaded": true,
+      "currentSrc": "express-shop-800.webp"
+    }
+  ],
+  "screenshotDir": "scripts/shots",
+  "totalCards": 11
+}

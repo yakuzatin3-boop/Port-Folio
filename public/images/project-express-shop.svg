@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#13160F"/>
+      <stop offset="1" stop-color="#0D1109"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="880" cy="200" r="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A3E635" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#A3E635" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#g)"/>
+  <rect x=".5" y=".5" width="1199" height="749" stroke="rgba(255,255,255,.08)"/>
+  <circle cx="880" cy="200" r="320" fill="url(#glow)"/>
+  <g>
+    <rect x="780" y="160" width="200" height="140" rx="16" stroke="#A3E635" stroke-width="10" fill="none" opacity=".85"/>
+    <rect x="800" y="180" width="40" height="40" rx="8" stroke="#A3E635" stroke-width="8" fill="none"/>
+    <rect x="860" y="180" width="40" height="40" rx="8" stroke="#A3E635" stroke-width="8" fill="none"/>
+    <rect x="920" y="180" width="40" height="40" rx="8" stroke="#A3E635" stroke-width="8" fill="none"/>
+    <rect x="800" y="240" width="40" height="40" rx="8" stroke="#A3E635" stroke-width="8" fill="none"/>
+    <rect x="860" y="240" width="100" height="40" rx="8" stroke="#A3E635" stroke-width="8" fill="none"/>
+    <circle cx="820" cy="320" r="12" fill="#A3E635"/>
+    <circle cx="880" cy="320" r="12" fill="#A3E635" opacity=".6"/>
+    <circle cx="940" cy="320" r="12" fill="#A3E635" opacity=".4"/>
+  </g>
+  <rect x="64" y="56" width="1072" height="52" rx="12" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)"/>
+  <circle cx="92" cy="82" r="5" fill="#A3E635"/>
+  <rect x="110" y="76" width="100" height="12" rx="6" fill="rgba(245,245,242,.5)"/>
+  <text x="64" y="200" fill="#F5F5F2" font-family="Inter Tight,Arial Black,Arial" font-size="64" font-weight="800" letter-spacing="-2px">EXPRESS SHOP API</text>
+  <text x="64" y="260" fill="#A3E635" font-family="JetBrains Mono,monospace" font-size="20" font-weight="600">products • cart • orders</text>
+  <text x="64" y="320" fill="rgba(245,245,242,.6)" font-family="Inter,Arial" font-size="22" line-height="32">Express • Node.js • JavaScript • Modular Shop API</text>
+  <g>
+    <rect x="64" y="400" width="180" height="56" rx="14" fill="rgba(163,230,53,.16)" stroke="rgba(163,230,53,.7)"/>
+    <text x="154" y="434" fill="#A3E635" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">PRODUCTS</text>
+  </g>
+  <g>
+    <rect x="260" y="400" width="180" height="56" rx="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="350" y="434" fill="#F5F5F2" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">CART LOGIC</text>
+  </g>
+  <g>
+    <rect x="456" y="400" width="200" height="56" rx="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="556" y="434" fill="#F5F5F2" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">ORDER ROUTES</text>
+  </g>
+</svg>

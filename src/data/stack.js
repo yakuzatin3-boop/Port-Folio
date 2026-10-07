@@ -8,12 +8,12 @@ import {
   SiNestjs,
   SiLaravel,
   SiMysql,
+  SiPostman,
   SiPostgresql,
   SiMongodb,
   SiCplusplus,
   SiGit,
   SiGithub,
-  SiTelegram,
 } from "react-icons/si";
 import { Code2, Table2, QrCode } from "lucide-react";
 
@@ -74,11 +74,11 @@ export const stackGroups = [
     items: [
       { name: "C/C++", icon: SiCplusplus, color: "#00599C" },
       { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "GitHub", icon: SiGithub, color: "#E5E5E5" },
+      { name: "GitHub", icon: SiGithub, color: "#F05032" },
       { name: "VS Code", icon: Code2, color: "#22A6F2" },
       { name: "MySQL Workbench", icon: Table2, color: "#4479A1" },
       { name: "Bakong KHQR API", icon: QrCode, color: "#F97316" },
-      { name: "Telegram Bot API", icon: SiTelegram, color: "#29A9EB" },
+      { name: "Postman", icon: SiPostman, color: "#F05032" },
     ],
   },
 ];

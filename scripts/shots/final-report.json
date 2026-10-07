@@ -1,0 +1,305 @@
+{
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "badResponses": [],
+  "imageRequests": 22,
+  "cards": [
+    {
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "fullstack-commerce-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "school-management-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "nuxt-admin-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "nest-ai-python-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 588,
+      "layoutH": 441,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "course-labs-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "nest-api-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "mongo-express-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "laravel-blade-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "tailwind-cli-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "node-express-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    },
+    {
+      "layoutW": 384,
+      "layoutH": 288,
+      "ratio": 1.3333,
+      "hClass": null,
+      "overflow": "hidden",
+      "radius": "24px",
+      "imgLoaded": true,
+      "src": "express-shop-800.webp",
+      "objectFit": "cover",
+      "blurSample": "present"
+    }
+  ],
+  "blurColors": "avgR=225 size=24x18",
+  "hover": {
+    "glareOpacity": 0.5,
+    "glareBlend": "soft-light",
+    "shadowOpacity": 0.6,
+    "scale": "1.02",
+    "transformStyle": "preserve-3d",
+    "perspective": "1100px",
+    "arrowZ": 44,
+    "badgeZ": 30,
+    "textZ": 10,
+    "arrowMagnet": "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -5.03477, -6.21"
+  },
+  "idle": {
+    "glareOpacity": 0,
+    "shadowOpacity": 0.3
+  },
+  "cardPixels": [
+    {
+      "i": 0,
+      "w": 588,
+      "h": 705,
+      "darkInArc": 0
+    },
+    {
+      "i": 1,
+      "w": 588,
+      "h": 625,
+      "darkInArc": 0
+    },
+    {
+      "i": 2,
+      "w": 588,
+      "h": 728,
+      "darkInArc": 0
+    },
+    {
+      "i": 3,
+      "w": 588,
+      "h": 648,
+      "darkInArc": 0
+    },
+    {
+      "i": 4,
+      "w": 588,
+      "h": 648,
+      "darkInArc": 0
+    },
+    {
+      "i": 5,
+      "w": 384,
+      "h": 468,
+      "darkInArc": 1
+    },
+    {
+      "i": 6,
+      "w": 384,
+      "h": 468,
+      "darkInArc": 0
+    },
+    {
+      "i": 7,
+      "w": 384,
+      "h": 468,
+      "darkInArc": 2
+    },
+    {
+      "i": 8,
+      "w": 384,
+      "h": 469,
+      "darkInArc": 0
+    },
+    {
+      "i": 9,
+      "w": 384,
+      "h": 469,
+      "darkInArc": 0
+    },
+    {
+      "i": 10,
+      "w": 384,
+      "h": 469,
+      "darkInArc": 0
+    }
+  ],
+  "cards390": [
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "fullstack-commerce-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "school-management-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "nuxt-admin-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "nest-ai-python-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "course-labs-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "nest-api-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "mongo-express-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "laravel-blade-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "tailwind-cli-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "node-express-800.webp"
+    },
+    {
+      "w": 350,
+      "h": 263,
+      "ratio": 1.3308,
+      "loaded": true,
+      "src": "express-shop-800.webp"
+    }
+  ]
+}

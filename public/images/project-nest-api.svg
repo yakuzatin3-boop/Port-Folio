@@ -1,1 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"><rect width="1200" height="700" fill="#111719"/><rect x="42" y="42" width="1116" height="70" rx="8" fill="#1d292c"/><text x="78" y="87" fill="#e0234e" font-family="Arial" font-size="25" font-weight="700">NestJS API</text><text x="820" y="86" fill="#a7b4b7" font-family="Arial" font-size="16">DOCS   ENDPOINTS   STATUS</text><text x="78" y="245" fill="#f0f8f8" font-family="Arial" font-size="67" font-weight="700">Reliable</text><text x="78" y="320" fill="#e0234e" font-family="Arial" font-size="67" font-weight="700">backend APIs.</text><text x="82" y="382" fill="#9baeb1" font-family="Arial" font-size="21">Structured services built for real applications.</text><rect x="82" y="438" width="190" height="52" rx="26" fill="#e0234e"/><text x="133" y="472" fill="#fff" font-family="Arial" font-size="18" font-weight="700">View API</text><rect x="765" y="195" width="220" height="220" rx="18" fill="#263b3e"/><text x="810" y="325" fill="#e0234e" font-family="Arial" font-size="42" font-weight="700">API</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bgNest" x1="0" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#141114"/>
+      <stop offset="1" stop-color="#0C0A0D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgNest)"/>
+  <rect x="0.5" y="0.5" width="1199" height="899" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="60" y="60" width="1080" height="60" rx="14" fill="#1C161C" stroke="rgba(224,35,78,0.25)"/>
+  <circle cx="90" cy="90" r="7" fill="#E0234E"/>
+  <rect x="115" y="84" width="150" height="12" rx="6" fill="rgba(245,245,242,0.6)"/>
+  <rect x="960" y="78" width="130" height="24" rx="12" fill="#E0234E"/>
+  <text x="1025" y="94" fill="#FFFFFF" font-family="Inter Tight, Arial" font-size="12" font-weight="800" text-anchor="middle">REST API</text>
+  <g>
+    <rect x="60" y="160" width="1080" height="240" rx="18" fill="#1C161C" stroke="rgba(255,255,255,0.1)"/>
+    <rect x="84" y="184" width="960" height="14" rx="7" fill="rgba(255,255,255,0.14)"/>
+    <rect x="84" y="212" width="680" height="12" rx="6" fill="rgba(255,255,255,0.1)"/>
+    <rect x="84" y="244" width="280" height="70" rx="14" fill="rgba(224,35,78,0.16)" stroke="rgba(224,35,78,0.4)"/>
+    <rect x="376" y="244" width="280" height="70" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="668" y="244" width="280" height="70" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="84" y="326" width="400" height="48" rx="12" fill="rgba(255,255,255,0.05)"/>
+    <rect x="496" y="326" width="400" height="48" rx="12" fill="rgba(255,255,255,0.05)"/>
+  </g>
+  <text x="60" y="460" fill="#F5F5F2" font-family="Inter Tight, Arial Black, Arial" font-size="64" font-weight="800" letter-spacing="-2px">NESTJS REST API</text>
+  <text x="60" y="520" fill="#E0234E" font-family="JetBrains Mono, monospace" font-size="20" font-weight="600">NestJS • TypeScript • Modular Architecture</text>
+  <text x="60" y="580" fill="rgba(245,245,242,0.7)" font-family="Inter, Arial" font-size="22" line-height="34">Scalable REST API with clean modular structure, DTO validation,</text>
+  <text x="60" y="620" fill="rgba(245,245,242,0.7)" font-family="Inter, Arial" font-size="22" line-height="34">and production-ready architecture.</text>
+  <rect x="60" y="680" width="220" height="56" rx="14" fill="rgba(224,35,78,0.18)" stroke="rgba(224,35,78,0.6)"/>
+  <text x="170" y="714" fill="#E0234E" font-family="Inter Tight, Arial" font-size="18" font-weight="800" text-anchor="middle">MODULAR DESIGN</text>
+  <rect x="300" y="680" width="220" height="56" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)"/>
+  <text x="410" y="714" fill="#F5F5F2" font-family="Inter Tight, Arial" font-size="18" font-weight="800" text-anchor="middle">DTO VALIDATION</text>
+</svg>

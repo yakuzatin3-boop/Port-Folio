@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<defs>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+    <path d="M48 0H0V48" fill="none" stroke="rgba(20,20,20,0.045)" stroke-width="1"/>
+  </pattern>
+  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset="1" stop-color="#E7E6E0" stop-opacity="0.95"/>
+  </linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="26" stdDeviation="26" flood-color="#1A1A1A" flood-opacity="0.20"/>
+  </filter>
+  <filter id="shadowSm" x="-60%" y="-60%" width="220%" height="220%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#1A1A1A" flood-opacity="0.22"/>
+  </filter>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="10"/>
+  </filter>
+  
+</defs>
+<rect width="1200" height="900" fill="#F5F4F0"/>
+<rect width="1200" height="900" fill="url(#grid)"/>
+<ellipse cx="360" cy="720" rx="90" ry="34" fill="#E8685D" opacity="0.10"/>
+    <ellipse cx="850" cy="150" rx="110" ry="40" fill="#A9C7E8" opacity="0.12"/><line x1="600" y1="430" x2="350" y2="280" stroke="#E4E1D8" stroke-width="16" stroke-linecap="round"/><line x1="600" y1="430" x2="850" y2="280" stroke="#E4E1D8" stroke-width="16" stroke-linecap="round"/><line x1="600" y1="430" x2="350" y2="560" stroke="#E4E1D8" stroke-width="16" stroke-linecap="round"/><line x1="600" y1="430" x2="850" y2="560" stroke="#E4E1D8" stroke-width="16" stroke-linecap="round"/><g filter="url(#shadowSm)">
+    <path d="M 350 241 L 428 280 L 350 319 L 272 280 Z" fill="#F6A79E" stroke="#F6A79E" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 272 280 L 350 319 L 350 393 L 272 354 Z" fill="#E8685D" stroke="#E8685D" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 428 280 L 350 319 L 350 393 L 428 354 Z" fill="#C64E44" stroke="#C64E44" stroke-width="7" stroke-linejoin="round"/>
+  </g><g filter="url(#shadowSm)">
+    <path d="M 850 241 L 928 280 L 850 319 L 772 280 Z" fill="#A9C7E8" stroke="#A9C7E8" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 772 280 L 850 319 L 850 393 L 772 354 Z" fill="#8FB4DD" stroke="#8FB4DD" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 928 280 L 850 319 L 850 393 L 928 354 Z" fill="#6E9BD0" stroke="#6E9BD0" stroke-width="7" stroke-linejoin="round"/>
+  </g><g filter="url(#shadowSm)">
+    <path d="M 350 521 L 428 560 L 350 599 L 272 560 Z" fill="#A9C7E8" stroke="#A9C7E8" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 272 560 L 350 599 L 350 673 L 272 634 Z" fill="#8FB4DD" stroke="#8FB4DD" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 428 560 L 350 599 L 350 673 L 428 634 Z" fill="#6E9BD0" stroke="#6E9BD0" stroke-width="7" stroke-linejoin="round"/>
+  </g><g filter="url(#shadowSm)">
+    <path d="M 850 521 L 928 560 L 850 599 L 772 560 Z" fill="#F6A79E" stroke="#F6A79E" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 772 560 L 850 599 L 850 673 L 772 634 Z" fill="#E8685D" stroke="#E8685D" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 928 560 L 850 599 L 850 673 L 928 634 Z" fill="#C64E44" stroke="#C64E44" stroke-width="7" stroke-linejoin="round"/>
+  </g><g filter="url(#shadow)">
+    <path d="M 600 355 L 750 430 L 600 505 L 450 430 Z" fill="#F6A79E" stroke="#F6A79E" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 450 430 L 600 505 L 600 655 L 450 580 Z" fill="#E8685D" stroke="#E8685D" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M 750 430 L 600 505 L 600 655 L 750 580 Z" fill="#C64E44" stroke="#C64E44" stroke-width="7" stroke-linejoin="round"/>
+  </g><g filter="url(#shadowSm)">
+    <rect x="900" y="130" width="210" height="92" rx="26" fill="#FFFFFF"  />
+    <ellipse cx="1160" cy="176" rx="20" ry="26" fill="#A9C7E8" transform="rotate(18 1160 176)"/>
+    <rect x="932" y="158" width="120" height="34" rx="17" fill="#E8F6EC" stroke="#8FD6A4" stroke-width="3"/>
+    <text x="992" y="182" text-anchor="middle" font-family="Arial" font-size="21" font-weight="700" fill="#3FA767">200 OK</text>
+  </g>
+<g>
+    <rect x="64" y="60" width="52" height="11" rx="5.5" fill="#E8685D"/>
+    <text x="64" y="128" font-family="Inter Tight, Arial Black, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="0.5" fill="#2B2B2B">NESTJS REST API</text>
+  </g>
+<rect x="0" y="730" width="1200" height="170" fill="url(#fade)"/>
+</svg>

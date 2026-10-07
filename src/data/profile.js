@@ -15,7 +15,7 @@ export const profile = {
   phoneHref: "tel:+855976903883",
   cv: "/Tim_Vuthin_CV.pdf",
   status: "AVAILABLE FOR WORK",
-  bio: "IT Instructor at ETEC Center teaching programming languages and modern frontend development, with hands-on experience building full-stack web and mobile applications. Skilled in REST APIs, JWT authentication, and Bakong KHQR payment integration.",
+  bio: "IT Instructor at ETEC Center teaching programming languages and modern frontend development, with hands-on experience building full-stack web and mobile applications. Skilled in REST APIs,OTP, JWT authentication, and Bakong KHQR payment integration. I'm a full-stack web developer who loves working with JavaScript and TypeScript frameworks like NestJS, Express, React, Next.js, Vue.js, and Nuxt.js. My goal is to become a software engineer.",
   hero: {
     greeting: "HELLO, I'M TIM VUTHIN",
     headlineTop: "FULL STACK",

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12100F"/>
+      <stop offset="1" stop-color="#0D0B09"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="880" cy="200" r="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF2D20" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#FF2D20" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#g)"/>
+  <rect x=".5" y=".5" width="1199" height="749" stroke="rgba(255,255,255,.08)"/>
+  <circle cx="880" cy="200" r="340" fill="url(#glow)"/>
+  <g>
+    <path d="M760 180 C820 120, 980 120, 1040 180 L1040 340 C980 400, 820 400, 760 340 Z" stroke="#FF2D20" stroke-width="10" fill="none" opacity=".8"/>
+    <line x1="760" y1="180" x2="900" y2="280" stroke="#FF2D20" stroke-width="10" opacity=".8"/>
+    <line x1="1040" y1="180" x2="900" y2="280" stroke="#FF2D20" stroke-width="10" opacity=".8"/>
+    <circle cx="900" cy="280" r="14" fill="#FF2D20"/>
+  </g>
+  <rect x="64" y="56" width="1072" height="52" rx="12" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)"/>
+  <circle cx="92" cy="82" r="5" fill="#FF2D20"/>
+  <rect x="110" y="76" width="120" height="12" rx="6" fill="rgba(245,245,242,.5)"/>
+  <text x="64" y="200" fill="#F5F5F2" font-family="Inter Tight,Arial Black,Arial" font-size="64" font-weight="800" letter-spacing="-2px">LARAVEL BLADE APPLICATION</text>
+  <text x="64" y="260" fill="#FF2D20" font-family="JetBrains Mono,monospace" font-size="20" font-weight="600">&lt; blade-views /&gt;</text>
+  <text x="64" y="320" fill="rgba(245,245,242,.6)" font-family="Inter,Arial" font-size="22" line-height="32">Laravel • Blade Templating • Routing • Reusable Components</text>
+  <g>
+    <rect x="64" y="400" width="200" height="56" rx="14" fill="rgba(255,45,32,.16)" stroke="rgba(255,45,32,.6)"/>
+    <text x="164" y="434" fill="#FF2D20" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">ROUTES</text>
+  </g>
+  <g>
+    <rect x="280" y="400" width="200" height="56" rx="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="380" y="434" fill="#F5F5F2" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">LAYOUTS</text>
+  </g>
+  <g>
+    <rect x="496" y="400" width="230" height="56" rx="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="611" y="434" fill="#F5F5F2" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">BLADE COMPONENTS</text>
+  </g>
+</svg>

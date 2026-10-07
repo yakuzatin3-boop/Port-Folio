@@ -1,81 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none">
-  <rect width="1200" height="750" fill="#111111"/>
-  <rect x="0.5" y="0.5" width="1199" height="749" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="48" y="44" width="320" height="662" rx="18" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-  <circle cx="84" cy="84" r="7" fill="#FF9F1C"/>
-  <rect x="104" y="77" width="140" height="14" rx="7" fill="rgba(245,245,242,0.5)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16130F"/>
+      <stop offset="1" stop-color="#0F0C0A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg5)"/>
+  <rect x="0.5" y="0.5" width="1199" height="899" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="60" y="60" width="1080" height="60" rx="14" fill="#221F17" stroke="rgba(255,159,28,0.25)"/>
+  <circle cx="90" cy="90" r="7" fill="#FF9F1C"/>
+  <rect x="115" y="84" width="150" height="12" rx="6" fill="rgba(245,245,242,0.6)"/>
+  <rect x="920" y="78" width="170" height="24" rx="12" fill="#FF9F1C"/>
+  <text x="1005" y="94" fill="#0A0A0A" font-family="Inter Tight, Arial" font-size="12" font-weight="800" text-anchor="middle">TEACHING LABS</text>
   <g>
-    <rect x="76" y="132" width="264" height="52" rx="12" fill="rgba(255,159,28,0.14)" stroke="rgba(255,159,28,0.4)"/>
-    <circle cx="106" cy="158" r="10" fill="#FF9F1C"/>
-    <rect x="128" y="146" width="150" height="10" rx="5" fill="#FF9F1C" opacity="0.85"/>
-    <rect x="128" y="164" width="96" height="8" rx="4" fill="rgba(245,245,242,0.35)"/>
-    <g fill="rgba(255,255,255,0.06)">
-      <rect x="76" y="196" width="264" height="52" rx="12"/>
-      <rect x="76" y="260" width="264" height="52" rx="12"/>
-      <rect x="76" y="324" width="264" height="52" rx="12"/>
-      <rect x="76" y="388" width="264" height="52" rx="12"/>
-      <rect x="76" y="452" width="264" height="52" rx="12"/>
-      <rect x="76" y="516" width="264" height="52" rx="12"/>
-    </g>
-    <g fill="rgba(138,138,133,0.7)">
-      <circle cx="106" cy="222" r="8"/>
-      <circle cx="106" cy="286" r="8"/>
-      <circle cx="106" cy="350" r="8"/>
-      <circle cx="106" cy="414" r="8"/>
-      <circle cx="106" cy="478" r="8"/>
-      <circle cx="106" cy="542" r="8"/>
-    </g>
-    <g fill="rgba(245,245,242,0.3)">
-      <rect x="128" y="216" width="164" height="10" rx="5"/>
-      <rect x="128" y="280" width="140" height="10" rx="5"/>
-      <rect x="128" y="344" width="176" height="10" rx="5"/>
-      <rect x="128" y="408" width="132" height="10" rx="5"/>
-      <rect x="128" y="472" width="152" height="10" rx="5"/>
-      <rect x="128" y="536" width="120" height="10" rx="5"/>
-    </g>
-    <g fill="rgba(138,138,133,0.55)">
-      <rect x="128" y="232" width="92" height="7" rx="3.5"/>
-      <rect x="128" y="296" width="76" height="7" rx="3.5"/>
-      <rect x="128" y="360" width="104" height="7" rx="3.5"/>
-      <rect x="128" y="424" width="84" height="7" rx="3.5"/>
-      <rect x="128" y="488" width="96" height="7" rx="3.5"/>
-      <rect x="128" y="552" width="70" height="7" rx="3.5"/>
-    </g>
+    <rect x="60" y="160" width="520" height="240" rx="18" fill="#221F17" stroke="rgba(255,255,255,0.1)"/>
+    <rect x="84" y="184" width="220" height="48" rx="12" fill="rgba(255,159,28,0.16)" stroke="rgba(255,159,28,0.45)"/>
+    <rect x="316" y="184" width="220" height="48" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="84" y="244" width="220" height="48" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="316" y="244" width="220" height="48" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="84" y="304" width="220" height="48" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="316" y="304" width="220" height="48" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
   </g>
-  <rect x="76" y="616" width="264" height="60" rx="12" fill="#0F0F0F" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="100" y="638" width="76" height="14" rx="7" fill="rgba(163,230,53,0.7)"/>
-  <rect x="190" y="641" width="110" height="8" rx="4" fill="rgba(138,138,133,0.7)"/>
-  <rect x="400" y="44" width="752" height="56" rx="14" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="424" y="62" width="190" height="20" rx="10" fill="rgba(255,255,255,0.07)"/>
-  <rect x="1064" y="60" width="64" height="24" rx="12" fill="#FF9F1C"/>
-  <rect x="400" y="128" width="752" height="578" rx="18" fill="#0C0C0C" stroke="rgba(255,255,255,0.08)"/>
-  <g font-family="monospace">
-    <text x="436" y="180" font-size="20" fill="#F5F5F2">Lesson 03 — React Hooks</text>
-    <text x="436" y="214" font-size="15" fill="#8A8A85">First project build, step by step.</text>
-    <g font-size="15">
-      <text x="436" y="268" fill="#42B883">01</text>
-      <text x="474" y="268" fill="rgba(245,245,242,0.75)">import  {  useState  }  from  "react"</text>
-      <text x="436" y="302" fill="#42B883">02</text>
-      <text x="474" y="302" fill="rgba(245,245,242,0.55)">export  default  function  Card () {"{"}</text>
-      <text x="436" y="336" fill="#42B883">03</text>
-      <text x="474" y="336" fill="#FF9F1C">const  [ count , setCount ] = useState (0)</text>
-      <text x="436" y="370" fill="#42B883">04</text>
-      <text x="474" y="370" fill="rgba(245,245,242,0.55)">return (</text>
-      <text x="436" y="404" fill="#42B883">05</text>
-      <text x="474" y="404" fill="rgba(245,245,242,0.75)">&lt;button onClick={"{"} () =&gt; setCount (count + 1) {"}"}&gt;</text>
-      <text x="436" y="438" fill="#42B883">06</text>
-      <text x="474" y="438" fill="#A3E635">Clicked {"{"}count{"}"} times</text>
-      <text x="436" y="472" fill="#42B883">07</text>
-      <text x="474" y="472" fill="rgba(245,245,242,0.55)">&lt;/button&gt;</text>
-      <text x="436" y="506" fill="#42B883">08</text>
-      <text x="474" y="506" fill="rgba(245,245,242,0.55)">)</text>
-      <text x="436" y="540" fill="#42B883">09</text>
-      <text x="474" y="540" fill="rgba(245,245,242,0.55)">{"}"}</text>
-    </g>
-    <rect x="436" y="576" width="680" height="1" fill="rgba(255,255,255,0.08)"/>
-    <text x="436" y="616" font-size="14" fill="#8A8A85">$ npm run dev  →  localhost:5173  ·  compiled in 214 ms</text>
-    <text x="436" y="652" font-size="14" fill="#A3E635">✓ ready for students to clone</text>
+  <g>
+    <rect x="600" y="160" width="520" height="240" rx="18" fill="#221F17" stroke="rgba(255,255,255,0.1)"/>
+    <circle cx="640" cy="200" r="10" fill="#FF9F1C"/>
+    <rect x="670" y="194" width="140" height="12" rx="6" fill="rgba(255,255,255,0.16)"/>
+    <rect x="640" y="230" width="440" height="12" rx="6" fill="rgba(255,255,255,0.08)"/>
+    <rect x="640" y="256" width="400" height="12" rx="6" fill="rgba(255,255,255,0.08)"/>
+    <rect x="640" y="282" width="360" height="12" rx="6" fill="rgba(255,255,255,0.08)"/>
+    <rect x="640" y="320" width="220" height="56" rx="12" fill="rgba(255,159,28,0.18)" stroke="rgba(255,159,28,0.5)"/>
+    <rect x="880" y="320" width="220" height="56" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
   </g>
-  <rect x="436" y="676" width="12" height="18" fill="#A3E635"/>
-  <text x="48" y="740" font-family="monospace" font-size="16" letter-spacing="4" fill="rgba(138,138,133,0.7)">HTML5 · JAVASCRIPT · TAILWIND · REACT</text>
+  <text x="60" y="460" fill="#F5F5F2" font-family="Inter Tight, Arial Black, Arial" font-size="64" font-weight="800" letter-spacing="-2px">BOOTCAMP COURSE LABS</text>
+  <text x="60" y="520" fill="#FF9F1C" font-family="JetBrains Mono, monospace" font-size="20" font-weight="600">HTML5 • CSS3 • JS • Tailwind • React</text>
+  <text x="60" y="580" fill="rgba(245,245,242,0.7)" font-family="Inter, Arial" font-size="22" line-height="34">Curriculum I teach at ETEC Center — practical exercises and projects</text>
+  <text x="60" y="620" fill="rgba(245,245,242,0.7)" font-family="Inter, Arial" font-size="22" line-height="34">students can clone and build from.</text>
+  <rect x="60" y="680" width="200" height="56" rx="14" fill="rgba(255,159,28,0.18)" stroke="rgba(255,159,28,0.6)"/>
+  <text x="160" y="714" fill="#FF9F1C" font-family="Inter Tight, Arial" font-size="18" font-weight="800" text-anchor="middle">OPEN REPOS</text>
+  <rect x="280" y="680" width="220" height="56" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)"/>
+  <text x="390" y="714" fill="#F5F5F2" font-family="Inter Tight, Arial" font-size="18" font-weight="800" text-anchor="middle">STUDENT PROJECTS</text>
 </svg>

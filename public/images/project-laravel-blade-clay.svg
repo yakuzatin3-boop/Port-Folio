@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+<defs>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+    <path d="M48 0H0V48" fill="none" stroke="rgba(20,20,20,0.045)" stroke-width="1"/>
+  </pattern>
+  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+    <stop offset="1" stop-color="#E7E6E0" stop-opacity="0.95"/>
+  </linearGradient>
+  <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="26" stdDeviation="26" flood-color="#1A1A1A" flood-opacity="0.20"/>
+  </filter>
+  <filter id="shadowSm" x="-60%" y="-60%" width="220%" height="220%">
+    <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#1A1A1A" flood-opacity="0.22"/>
+  </filter>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="10"/>
+  </filter>
+  
+</defs>
+<rect width="1200" height="900" fill="#F5F4F0"/>
+<rect width="1200" height="900" fill="url(#grid)"/>
+<g filter="url(#shadow)">
+      <rect x="246.2" y="560" width="327.6" height="156" rx="20" fill="#FBD9DC"  />
+      <rect x="262.2" y="576" width="295.6" height="30" rx="10" fill="#F4A6B0" opacity="0.85"/>
+      <rect x="262.2" y="620" width="98.28" height="66" rx="12" fill="rgba(20,20,20,0.06)"/>
+      <rect x="370.688" y="624" width="163.8" height="18" rx="9" fill="rgba(20,20,20,0.12)"/>
+      <rect x="370.688" y="656" width="137.592" height="14" rx="7" fill="rgba(20,20,20,0.09)"/>
+      <rect x="370.688" y="682" width="111.38400000000001" height="14" rx="7" fill="rgba(20,20,20,0.09)"/>
+      <rect x="477.79999999999995" y="624" width="64" height="26" rx="13" fill="#F4A6B0"/>
+    </g><g filter="url(#shadow)">
+      <rect x="225.2" y="440" width="369.6" height="176" rx="20" fill="#FCE7E8"  />
+      <rect x="241.2" y="456" width="337.6" height="30" rx="10" fill="#E85D5D" opacity="0.85"/>
+      <rect x="241.2" y="500" width="110.88000000000001" height="86" rx="12" fill="rgba(20,20,20,0.06)"/>
+      <rect x="365.648" y="504" width="184.8" height="18" rx="9" fill="rgba(20,20,20,0.12)"/>
+      <rect x="365.648" y="536" width="155.232" height="14" rx="7" fill="rgba(20,20,20,0.09)"/>
+      <rect x="365.648" y="562" width="125.66400000000002" height="14" rx="7" fill="rgba(20,20,20,0.09)"/>
+      <rect x="498.79999999999995" y="504" width="64" height="26" rx="13" fill="#E85D5D"/>
+    </g><g filter="url(#shadow)">
+      <rect x="200" y="310" width="420" height="200" rx="20" fill="#FFF3F3"  />
+      <rect x="216" y="326" width="388" height="30" rx="10" fill="#C74747" opacity="0.85"/>
+      <rect x="216" y="370" width="126" height="110" rx="12" fill="rgba(20,20,20,0.06)"/>
+      <rect x="359.6" y="374" width="210" height="18" rx="9" fill="rgba(20,20,20,0.12)"/>
+      <rect x="359.6" y="406" width="176.4" height="14" rx="7" fill="rgba(20,20,20,0.09)"/>
+      <rect x="359.6" y="432" width="142.8" height="14" rx="7" fill="rgba(20,20,20,0.09)"/>
+      <rect x="524" y="374" width="64" height="26" rx="13" fill="#C74747"/>
+    </g><g filter="url(#shadowSm)">
+    <text x="820" y="330" font-family="Georgia,serif" font-size="300" font-weight="700" fill="#E85D5D">{ }</text>
+  </g><g filter="url(#shadowSm)"><rect x="900" y="560" width="150" height="46" rx="23" fill="#E85D5D"/></g><g filter="url(#shadowSm)"><rect x="920" y="630" width="130" height="46" rx="23" fill="#F4A6B0"/></g><g filter="url(#shadowSm)"><rect x="940" y="700" width="110" height="46" rx="23" fill="#C74747"/></g>
+<g>
+    <rect x="64" y="60" width="52" height="11" rx="5.5" fill="#E85D5D"/>
+    <text x="64" y="128" font-family="Inter Tight, Arial Black, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="0.5" fill="#2B2B2B">LARAVEL BLADE APPLICATION</text>
+  </g>
+<rect x="0" y="730" width="1200" height="170" fill="url(#fade)"/>
+</svg>

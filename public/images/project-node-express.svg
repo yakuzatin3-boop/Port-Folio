@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1A170F"/>
+      <stop offset="1" stop-color="#15100A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="880" cy="200" r="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7DF1E" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#F7DF1E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#g)"/>
+  <rect x=".5" y=".5" width="1199" height="749" stroke="rgba(255,255,255,.08)"/>
+  <circle cx="880" cy="200" r="320" fill="url(#glow)"/>
+  <g>
+    <path d="M840 160 L920 160 L920 240 L1000 240 L1000 320 L920 320 L920 400 L840 400 L840 320 L760 320 L760 240 L840 240 Z" stroke="#F7DF1E" stroke-width="10" fill="none" opacity=".85" transform="rotate(45 880 280)"/>
+  </g>
+  <rect x="64" y="56" width="1072" height="52" rx="12" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)"/>
+  <circle cx="92" cy="82" r="5" fill="#F7DF1E"/>
+  <rect x="110" y="76" width="110" height="12" rx="6" fill="rgba(245,245,242,.5)"/>
+  <text x="64" y="200" fill="#F5F5F2" font-family="Inter Tight,Arial Black,Arial" font-size="64" font-weight="800" letter-spacing="-2px">NODE.JS EXPRESS PRACTICE</text>
+  <text x="64" y="260" fill="#F7DF1E" font-family="JetBrains Mono,monospace" font-size="20" font-weight="600">app.get() • middleware • req/res</text>
+  <text x="64" y="320" fill="rgba(245,245,242,.6)" font-family="Inter,Arial" font-size="22" line-height="32">Node.js • Express • JavaScript • REST Fundamentals</text>
+  <g>
+    <rect x="64" y="400" width="180" height="56" rx="14" fill="rgba(247,223,30,.16)" stroke="rgba(247,223,30,.7)"/>
+    <text x="154" y="434" fill="#F7DF1E" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">ROUTING</text>
+  </g>
+  <g>
+    <rect x="260" y="400" width="200" height="56" rx="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="360" y="434" fill="#F5F5F2" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">MIDDLEWARE</text>
+  </g>
+  <g>
+    <rect x="476" y="400" width="200" height="56" rx="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)"/>
+    <text x="576" y="434" fill="#F5F5F2" font-family="Inter Tight,Arial" font-size="18" font-weight="700" text-anchor="middle">REST API BASICS</text>
+  </g>
+</svg>

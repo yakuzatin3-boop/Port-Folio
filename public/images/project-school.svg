@@ -1,81 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none">
-  <rect width="1200" height="750" fill="#111111"/>
-  <rect x="0.5" y="0.5" width="1199" height="749" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="48" y="44" width="240" height="662" rx="18" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-  <circle cx="84" cy="84" r="7" fill="#61DAFB"/>
-  <rect x="104" y="77" width="104" height="14" rx="7" fill="rgba(245,245,242,0.5)"/>
-  <g fill="rgba(255,255,255,0.07)">
-    <rect x="72" y="136" width="192" height="40" rx="10"/>
-    <rect x="72" y="188" width="192" height="40" rx="10"/>
-    <rect x="72" y="240" width="192" height="40" rx="10"/>
-    <rect x="72" y="292" width="192" height="40" rx="10"/>
-  </g>
-  <rect x="72" y="136" width="192" height="40" rx="10" fill="rgba(97,218,251,0.14)"/>
-  <rect x="88" y="152" width="86" height="9" rx="4.5" fill="#61DAFB" opacity="0.8"/>
-  <rect x="320" y="44" width="832" height="54" rx="12" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="344" y="61" width="220" height="20" rx="10" fill="rgba(255,255,255,0.07)"/>
-  <rect x="1050" y="58" width="82" height="26" rx="13" fill="#61DAFB"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0C1013"/>
+      <stop offset="1" stop-color="#080B0D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg2)"/>
+  <rect x="0.5" y="0.5" width="1199" height="899" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="60" y="60" width="1080" height="60" rx="14" fill="#12171A" stroke="rgba(97,218,251,0.25)"/>
+  <circle cx="90" cy="90" r="7" fill="#61DAFB"/>
+  <rect x="115" y="84" width="150" height="12" rx="6" fill="rgba(245,245,242,0.6)"/>
+  <rect x="980" y="78" width="110" height="24" rx="12" fill="#61DAFB"/>
+  <text x="1035" y="94" fill="#0A0A0A" font-family="Inter Tight, Arial" font-size="12" font-weight="800" text-anchor="middle">DASHBOARD</text>
   <g>
-    <rect x="320" y="128" width="264" height="152" rx="16" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-    <rect x="344" y="152" width="120" height="14" rx="7" fill="rgba(138,138,133,0.9)"/>
-    <rect x="344" y="192" width="88" height="34" rx="8" fill="#A3E635"/>
-    <rect x="344" y="244" width="180" height="10" rx="5" fill="rgba(245,245,242,0.2)"/>
-    <rect x="616" y="128" width="264" height="152" rx="16" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-    <rect x="640" y="152" width="140" height="14" rx="7" fill="rgba(138,138,133,0.9)"/>
-    <rect x="640" y="192" width="72" height="34" rx="8" fill="rgba(255,255,255,0.1)"/>
-    <rect x="640" y="244" width="150" height="10" rx="5" fill="rgba(245,245,242,0.2)"/>
-    <rect x="912" y="128" width="240" height="152" rx="16" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-    <rect x="936" y="152" width="100" height="14" rx="7" fill="rgba(138,138,133,0.9)"/>
-    <rect x="936" y="192" width="72" height="34" rx="8" fill="rgba(255,255,255,0.1)"/>
-    <rect x="936" y="244" width="130" height="10" rx="5" fill="rgba(245,245,242,0.2)"/>
+    <rect x="60" y="160" width="520" height="240" rx="18" fill="#12171A" stroke="rgba(255,255,255,0.1)"/>
+    <rect x="84" y="184" width="472" height="16" rx="8" fill="rgba(255,255,255,0.12)"/>
+    <rect x="84" y="212" width="360" height="12" rx="6" fill="rgba(255,255,255,0.08)"/>
+    <rect x="84" y="244" width="220" height="68" rx="12" fill="rgba(97,218,251,0.14)" stroke="rgba(97,218,251,0.35)"/>
+    <rect x="316" y="244" width="220" height="68" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="84" y="324" width="220" height="68" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="316" y="324" width="220" height="68" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
   </g>
-  <rect x="320" y="312" width="832" height="394" rx="18" fill="#161616" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="352" y="344" width="200" height="16" rx="8" fill="rgba(245,245,242,0.55)"/>
-  <rect x="352" y="378" width="130" height="12" rx="6" fill="rgba(138,138,133,0.7)"/>
   <g>
-    <rect x="352" y="430" width="768" height="1" fill="rgba(255,255,255,0.08)"/>
-    <rect x="352" y="430" width="768" height="44" fill="rgba(255,255,255,0.03)"/>
-    <g fill="rgba(245,245,242,0.45)">
-      <rect x="376" y="447" width="120" height="10" rx="5"/>
-      <rect x="620" y="447" width="90" height="10" rx="5"/>
-      <rect x="850" y="447" width="70" height="10" rx="5"/>
-      <rect x="1030" y="447" width="60" height="10" rx="5"/>
-    </g>
-    <rect x="352" y="475" width="768" height="44" fill="rgba(255,255,255,0.015)"/>
-    <g fill="rgba(245,245,242,0.3)">
-      <rect x="376" y="492" width="150" height="10" rx="5"/>
-      <rect x="620" y="492" width="70" height="10" rx="5"/>
-      <rect x="850" y="492" width="90" height="10" rx="5"/>
-      <rect x="1030" y="492" width="50" height="10" rx="5"/>
-    </g>
-    <rect x="352" y="519" width="768" height="44" fill="rgba(255,255,255,0.03)"/>
-    <g fill="rgba(245,245,242,0.45)">
-      <rect x="376" y="536" width="100" height="10" rx="5"/>
-      <rect x="620" y="536" width="110" height="10" rx="5"/>
-      <rect x="850" y="536" width="60" height="10" rx="5"/>
-      <rect x="1030" y="536" width="70" height="10" rx="5"/>
-    </g>
-    <rect x="352" y="563" width="768" height="44" fill="rgba(255,255,255,0.015)"/>
-    <g fill="rgba(245,245,242,0.3)">
-      <rect x="376" y="580" width="140" height="10" rx="5"/>
-      <rect x="620" y="580" width="80" height="10" rx="5"/>
-      <rect x="850" y="580" width="100" height="10" rx="5"/>
-      <rect x="1030" y="580" width="56" height="10" rx="5"/>
-    </g>
-    <rect x="352" y="607" width="768" height="44" fill="rgba(255,255,255,0.03)"/>
-    <g fill="rgba(245,245,242,0.45)">
-      <rect x="376" y="624" width="112" height="10" rx="5"/>
-      <rect x="620" y="624" width="64" height="10" rx="5"/>
-      <rect x="850" y="624" width="76" height="10" rx="5"/>
-      <rect x="1030" y="624" width="66" height="10" rx="5"/>
-    </g>
-    <rect x="352" y="651" width="768" height="44" fill="rgba(255,255,255,0.015)"/>
-    <g fill="rgba(245,245,242,0.3)">
-      <rect x="376" y="668" width="96" height="10" rx="5"/>
-      <rect x="620" y="668" width="120" height="10" rx="5"/>
-      <rect x="850" y="668" width="70" height="10" rx="5"/>
-      <rect x="1030" y="668" width="58" height="10" rx="5"/>
-    </g>
+    <rect x="600" y="160" width="520" height="240" rx="18" fill="#12171A" stroke="rgba(255,255,255,0.1)"/>
+    <circle cx="640" cy="200" r="10" fill="#61DAFB"/>
+    <circle cx="680" cy="200" r="10" fill="rgba(97,218,251,0.5)"/>
+    <circle cx="720" cy="200" r="10" fill="rgba(97,218,251,0.3)"/>
+    <rect x="640" y="230" width="440" height="14" rx="7" fill="rgba(255,255,255,0.14)"/>
+    <rect x="640" y="256" width="380" height="12" rx="6" fill="rgba(255,255,255,0.1)"/>
+    <rect x="640" y="290" width="200" height="90" rx="12" fill="rgba(97,218,251,0.12)" stroke="rgba(97,218,251,0.35)"/>
+    <rect x="860" y="290" width="220" height="90" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)"/>
   </g>
-  <text x="48" y="740" font-family="monospace" font-size="16" letter-spacing="4" fill="rgba(138,138,133,0.7)">REST API · MYSQL · REACT</text>
+  <text x="60" y="460" fill="#F5F5F2" font-family="Inter Tight, Arial Black, Arial" font-size="64" font-weight="800" letter-spacing="-2px">SCHOOL MANAGEMENT SYSTEM</text>
+  <text x="60" y="520" fill="#61DAFB" font-family="JetBrains Mono, monospace" font-size="20" font-weight="600">NestJS • TypeScript • MongoDB • RBAC</text>
+  <text x="60" y="580" fill="rgba(245,245,242,0.7)" font-family="Inter, Arial" font-size="22" line-height="34">Role-based access (Admin/Teacher/Student), schedules with conflict</text>
+  <text x="60" y="620" fill="rgba(245,245,242,0.7)" font-family="Inter, Arial" font-size="22" line-height="34">detection and attendance tracking.</text>
+  <rect x="60" y="680" width="240" height="56" rx="14" fill="rgba(97,218,251,0.18)" stroke="rgba(97,218,251,0.6)"/>
+  <text x="180" y="714" fill="#61DAFB" font-family="Inter Tight, Arial" font-size="18" font-weight="800" text-anchor="middle">REST API</text>
+  <rect x="320" y="680" width="260" height="56" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)"/>
+  <text x="450" y="714" fill="#F5F5F2" font-family="Inter Tight, Arial" font-size="18" font-weight="800" text-anchor="middle">ROLE-BASED SECURITY</text>
 </svg>
