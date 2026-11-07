@@ -64,7 +64,7 @@ export default function Portrait({ sectionRef }) {
   return (
     <div
       ref={rootRef}
-      className="relative mx-auto h-[60vh] w-full max-w-[420px] lg:h-[85vh] lg:max-w-none"
+      className="relative mx-auto aspect-square w-full max-w-[420px] lg:max-w-none"
     >
       {/* Portrait photo */}
       <motion.div
@@ -83,7 +83,7 @@ export default function Portrait({ sectionRef }) {
               alt={`${profile.name}, ${profile.role}`}
               loading="eager"
               decoding="async"
-              className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain object-bottom"
+              className="absolute bottom-0 left-1/2 h-full w-auto max-w-full -translate-x-1/2 object-contain object-bottom"
               style={{ filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.45))" }}
             />
           </motion.div>

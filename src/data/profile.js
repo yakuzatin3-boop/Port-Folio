@@ -21,14 +21,14 @@ export const profile = {
     headlineTop: "FULL STACK",
     headlineBottom: "Developer",
     paragraph:
-      "I build robust, high-performance web applications with modern frameworks. From clean interfaces to scalable backends, turning ideas into production-ready products.",
+      "I build polished web apps and reliable APIs, then teach others modern frontend development.",
   },
   languages: [
     { name: "Khmer", level: "Native" },
     { name: "English", level: "Advanced" },
   ],
   stats: [
-    { value: 5, from: 0, suffix: "", label: "Featured projects" },
+    { value: 6, from: 0, suffix: "", label: "Featured projects" },
     { value: 20, from: 0, suffix: "+", label: "Technologies" },
     { value: 2025, from: 2018, suffix: "", label: "Teaching since" },
   ],

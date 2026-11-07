@@ -5,7 +5,7 @@ import { EASE } from "../../lib/easing";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import useReducedMotion from "../../hooks/useReducedMotion";
 
-export default function HoverRevealList({ items = [] }) {
+export default function HoverRevealList({ items = [], onSelect }) {
   const [active, setActive] = useState(null);
   const finePointer = useMediaQuery("(hover: hover) and (pointer: fine)");
   const reduced = useReducedMotion();
@@ -31,6 +31,21 @@ export default function HoverRevealList({ items = [] }) {
             target={item.href?.startsWith("http") ? "_blank" : undefined}
             rel={item.href?.startsWith("http") ? "noreferrer" : undefined}
             data-cursor="view"
+            onClick={(event) => {
+              if (!onSelect) return;
+              if (
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey ||
+                event.button !== 0
+              ) {
+                return;
+              }
+              event.preventDefault();
+              event.currentTarget.focus({ preventScroll: true });
+              onSelect(item, index);
+            }}
             onMouseEnter={() => setActive(item)}
             onMouseLeave={() => setActive(null)}
             className="group relative flex items-center gap-6 border-b border-line py-7 md:gap-10 md:py-9"

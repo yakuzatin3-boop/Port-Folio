@@ -207,7 +207,7 @@ export default function TiltCard({
             />
           )}
           {image && (
-            <motion.picture style={{ transform: imgTransform }}>
+            <motion.picture className="relative z-10" style={{ transform: imgTransform }}>
               {srcset && (
                 <source
                   srcSet={srcset}
@@ -233,13 +233,13 @@ export default function TiltCard({
             </motion.picture>
           )}
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 [transform:translateZ(16px)]"
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-1/4 [transform:translateZ(16px)]"
             style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 100%)' }}
             aria-hidden="true"
           />
           {!tiltDisabled && (
             <motion.div
-              className="pointer-events-none absolute inset-0 mix-blend-soft-light transition-opacity duration-500 [transform:translateZ(18px)]"
+              className="pointer-events-none absolute inset-0 z-30 mix-blend-soft-light transition-opacity duration-500 [transform:translateZ(18px)]"
               style={{ background: glowBg, opacity: hovered && !reducedMotion ? 0.5 : 0 }}
             />
           )}

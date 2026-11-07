@@ -20,7 +20,7 @@ export const socials = [
   {
     label: "Telegram",
     mono: "TELEGRAM",
-    href: "https://t.me/vuthin_placeholder",
+    href: "https://t.me/Vuthin007",
     icon: FaTelegram,
     color: "#29A9EB",
   },

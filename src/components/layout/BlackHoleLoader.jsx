@@ -1,36 +1,31 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import BlackHoleScene from "../ui/BlackHoleScene";
+import { BLACK_HOLE_BLAST_DURATION, createBlackHoleBlast } from "../ui/transitionStages";
 
 /* ============================================================================
  * BlackHoleLoader
  * ----------------------------------------------------------------------------
  * Full-screen black-hole loading screen.
- * - <BlackHoleScene />: canvas stars, lensing glow, rotating orange/purple
- *   accretion disk and event-horizon core (requestAnimationFrame).
- * - Tailwind CSS: layout, image, progress bar, text, fades and the custom
- *   keyframes (bh-spin, bh-twinkle, bh-spiral-in, bh-shockwave, bh-flash)
- *   defined in src/index.css under `@theme`.
+ * - <BlackHoleScene />: canvas stars, lensing glow, rotating accretion disk
+ *   and event-horizon core.
+ * - createBlackHoleBlast(): the black-hole implosion and explosion.
+ * - Tailwind CSS: layout, progress, labels and the loader fade.
  *
- * Phases: "loading" (0-99%) -> "catch" (spiral-in) -> "flash" (shockwave +
- * fade-out) -> onComplete().
+ * Phases: "loading" (0-99%) -> "catch" (black-hole blast) ->
+ * "flash" (shockwave + fade-out) -> onComplete().
  * ==========================================================================*/
 
 /* --------------------------------------------------------------------------
- * CONFIG — speeds, image pull strength and catch/fade timings.
+ * CONFIG — simulated loading and catch/fade timings.
  * (Disk colors/speeds live in BlackHoleScene.)
  * ------------------------------------------------------------------------ */
 const CONFIG = {
   speed: {
     simulatedDuration: 3600, // ms for 0 -> 100 when no `progress` prop is given
   },
-  pull: {
-    // 0-100% behaviour: how strongly the image bends toward the center
-    maxBend: 0.16, // fraction of the distance the image bends toward the hole
-    wobble: 7, // px wobble amplitude for the image at full pull
-  },
   catch: {
-    spiralMs: 1900, // duration of the spiral-in (spaghettification) animation
-    flashDelayMs: 300, // delay before the loader fades (lets the flash pop)
+    stageDurationMs: BLACK_HOLE_BLAST_DURATION,
+    flashDelayMs: 180, // delay before the loader fades (lets the flash pop)
     fadeMs: 700, // loader fade-out duration
     completeBufferMs: 120, // slack before onComplete() fires
   },
@@ -38,7 +33,7 @@ const CONFIG = {
 
 const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
-export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onComplete }) {
+export default function BlackHoleLoader({ progress, onComplete }) {
   const hasProgress = progress !== undefined && progress !== null;
   const [simDisplay, setSimDisplay] = useState(0); // counter while simulating
   const [phase, setPhase] = useState("loading"); // "loading" | "catch" | "flash"
@@ -46,9 +41,7 @@ export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onC
   // Derived counter: follows the prop when given, otherwise the simulation.
   const display = hasProgress ? Math.floor(clamp(progress, 0, 100)) : simDisplay;
 
-  const restRef = useRef(null); // untransformed column (measures rest position)
-  const driftRef = useRef(null); // gets the rAF drift/bend transform
-  const imgRef = useRef(null); // receives the CSS spiral-in animation
+  const stageCanvasRef = useRef(null);
 
   const progressRef = useRef(0); // live progress, readable from rAF without re-render
   const phaseRef = useRef("loading");
@@ -65,13 +58,13 @@ export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onC
   // Per-frame pull/catch values handed to the canvas scene.
   const getDynamics = useCallback(() => {
     const catchT = catchStartRef.current
-      ? clamp((performance.now() - catchStartRef.current) / CONFIG.catch.spiralMs, 0, 1)
+      ? clamp((performance.now() - catchStartRef.current) / CONFIG.catch.stageDurationMs, 0, 1)
       : 0;
     return { pull: clamp(progressRef.current, 0, 100) / 100, catchT };
   }, []);
 
   /* ------------------------------------------------------------------------
-   * Phase 2 -> 3: shockwave flash, loader fade-out, then onComplete().
+  * Phase 2 -> 3: after the canvas sequence, flash and fade out the loader.
    * ---------------------------------------------------------------------- */
   const beginFlash = useCallback(() => {
     if (phaseRef.current !== "catch") return;
@@ -87,31 +80,28 @@ export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onC
   }, []);
 
   /* ------------------------------------------------------------------------
-   * Phase 1 -> 2: progress hit 100%. Capture the spiral geometry into CSS
-   * variables, then hand the image over to the bh-spiral-in animation.
+  * Phase 1 -> 2: progress hit 100%. Hand the image over to the canvas stage.
    * ---------------------------------------------------------------------- */
   const beginCatch = useCallback(() => {
     if (phaseRef.current !== "loading") return;
     phaseRef.current = "catch";
     catchStartRef.current = performance.now();
-
-    const el = imgRef.current;
-    if (el) {
-      const r = el.getBoundingClientRect();
-      const sx = window.innerWidth / 2 - (r.left + r.width / 2);
-      const sy = window.innerHeight / 2 - (r.top + r.height / 2);
-      const phi = (Math.atan2(sy, sx) * 180) / Math.PI; // direction to the core
-      el.style.setProperty("--bh-sx", `${sx.toFixed(1)}px`);
-      el.style.setProperty("--bh-sy", `${sy.toFixed(1)}px`);
-      el.style.setProperty("--bh-px", `${(-sy * 0.42).toFixed(1)}px`); // perpendicular bow => curved spiral
-      el.style.setProperty("--bh-py", `${(sx * 0.42).toFixed(1)}px`);
-      el.style.setProperty("--bh-phi", `${phi.toFixed(2)}deg`);
-      el.style.setProperty("--bh-spiral-ms", `${CONFIG.catch.spiralMs}ms`);
-    }
     setPhase("catch");
-    // Safety net in case animationend never arrives.
-    timersRef.current.push(window.setTimeout(beginFlash, CONFIG.catch.spiralMs + 700));
+
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) beginFlash();
   }, [beginFlash]);
+
+  useEffect(() => {
+    if (phase !== "catch") return undefined;
+    const canvas = stageCanvasRef.current;
+    if (!canvas) {
+      beginFlash();
+      return undefined;
+    }
+    const stage = createBlackHoleBlast({ canvas, onDone: beginFlash });
+    return () => stage.destroy();
+  }, [phase, beginFlash]);
 
   /* ------------------------------------------------------------------------
    * Progress: either follow the `progress` prop or simulate 0 -> 100%.
@@ -152,54 +142,6 @@ export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onC
   }, [hasProgress, progress, beginCatch]);
 
   /* ------------------------------------------------------------------------
-   * Image drift / bend (loading phase only): one rAF loop writing the inline
-   * transform. CSS owns the transform once the image is caught.
-   * ---------------------------------------------------------------------- */
-  useEffect(() => {
-    const reduced =
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return undefined;
-
-    let rafId = 0;
-    const start = performance.now();
-
-    const updateImage = (t) => {
-      if (phaseRef.current !== "loading") return;
-      const el = driftRef.current;
-      const rest = restRef.current;
-      if (!el || !rest) return;
-
-      const r = rest.getBoundingClientRect();
-      const dx = window.innerWidth / 2 - (r.left + r.width / 2);
-      const dy = window.innerHeight / 2 - (r.top + r.height / 2);
-      const dist = Math.hypot(dx, dy) || 1;
-      const pull = Math.pow(clamp(progressRef.current, 0, 100) / 100, 1.5);
-
-      // Gentle hover + drift.
-      const dX = Math.sin(t * 0.55) * 9 + Math.sin(t * 0.21 + 1.7) * 5;
-      const dY = Math.cos(t * 0.43) * 8 + Math.sin(t * 0.29 + 0.6) * 6;
-      // Pull-driven wobble: the closer to 100%, the shakier it gets.
-      const amp = pull * CONFIG.pull.wobble;
-      const wX = Math.sin(t * 7.4 + 1.3) * amp;
-      const wY = Math.cos(t * 8.6) * amp * 0.7;
-      const bend = pull * CONFIG.pull.maxBend * dist;
-      const rot = Math.sin(t * 0.8) * 1.8 + pull * Math.sin(t * 5.2) * 5;
-
-      const x = dX + wX + (dx / dist) * bend;
-      const y = dY + wY + (dy / dist) * bend;
-      el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${rot.toFixed(2)}deg)`;
-    };
-
-    const frame = (now) => {
-      updateImage((now - start) / 1000);
-      rafId = requestAnimationFrame(frame);
-    };
-    rafId = requestAnimationFrame(frame);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
-
-  /* ------------------------------------------------------------------------
    * Cleanup: timers, scroll lock.
    * ---------------------------------------------------------------------- */
   useEffect(() => {
@@ -211,11 +153,6 @@ export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onC
       timers.length = 0;
     };
   }, []);
-
-  // The spiral animation finishing is what triggers the flash.
-  const handleSpiralEnd = (e) => {
-    if (e.animationName === "bh-spiral-in") beginFlash();
-  };
 
   const caught = phase !== "loading";
 
@@ -258,34 +195,17 @@ export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onC
         />
       ))}
 
-      {/* Image + progress column, floating near the edge */}
-      <div className="pointer-events-none absolute inset-0 z-10 flex items-start justify-center px-6 pt-[6%] md:justify-end md:px-0 md:pr-[8vw] md:pt-[16%]">
-        <div ref={restRef} className="w-[min(54vw,230px)] md:w-[240px]">
-          {/* Drift/bend layer: inline transform written by rAF while loading */}
-          <div ref={driftRef} className="will-change-transform">
-            {/* Spiral layer: CSS animation takes over the transform at 100% */}
-            <div
-              ref={imgRef}
-              className={caught ? "animate-bh-spiral-in" : undefined}
-              onAnimationEnd={handleSpiralEnd}
-            >
-              <div className="relative">
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -inset-7 rounded-[44px] bg-[radial-gradient(closest-side,rgba(255,140,70,0.3),rgba(139,92,246,0.16)_58%,transparent_78%)] blur-2xl"
-                />
-                <div className="relative aspect-square overflow-hidden rounded-[22px] border border-white/20 bg-white/5 shadow-[0_30px_80px_-28px_rgba(255,140,70,0.45)]">
-                  <img
-                    src={imageSrc}
-                    alt=""
-                    draggable={false}
-                    className="h-full w-full select-none object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+      {phase === "catch" && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches && (
+        <canvas
+          ref={stageCanvasRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-20"
+        />
+      )}
 
+      {/* Progress counter, centered opposite the black hole */}
+      <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 md:justify-end md:px-[8vw]">
+        <div className="w-[min(54vw,230px)] md:w-[240px]">
           {/* Progress bar + percentage counter (fades once caught) */}
           <div
             className={`mt-5 transition-opacity duration-500 ${
@@ -306,7 +226,7 @@ export default function BlackHoleLoader({ progress, imageSrc = "/image.png", onC
         </div>
       </div>
 
-      {/* Shockwave + flash pulse when the black hole catches the image */}
+      {/* Shockwave + flash pulse after the black hole explodes */}
       {phase === "flash" && (
         <>
           <div

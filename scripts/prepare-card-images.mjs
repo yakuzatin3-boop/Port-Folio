@@ -24,6 +24,7 @@ const fileToSlug = {
   'image copy 8.png': 'nest-api',
   'image copy 9.png': 'mongo-express',
   'image copy 10.png': 'course-labs',
+  'image copy 11.png': 'school-management-api',
 };
 
 async function run() {

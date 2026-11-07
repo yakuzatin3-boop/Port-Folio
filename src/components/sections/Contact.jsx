@@ -47,14 +47,16 @@ export default function Contact() {
   const [values, setValues] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
+  const [formError, setFormError] = useState("");
 
   const update = (event) => {
     const { name, value } = event.target;
     setValues((current) => ({ ...current, [name]: value }));
     setErrors((current) => ({ ...current, [name]: undefined }));
+    setFormError("");
   };
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
     const next = {};
     if (!values.name.trim()) next.name = "Please enter your name";
@@ -63,12 +65,35 @@ export default function Contact() {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
+    setFormError("");
     setStatus("sending");
-    setTimeout(() => setStatus("success"), 850);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          email: values.email.trim(),
+          message: values.message.trim(),
+        }),
+      });
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.error || "Could not send your message. Please try again.");
+      }
+
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+      setFormError(error.message || "Could not send your message. Please try again.");
+    }
   };
 
   const reset = () => {
     setValues({ name: "", email: "", message: "" });
+    setFormError("");
     setStatus("idle");
   };
 
@@ -229,8 +254,9 @@ export default function Contact() {
                       Message <span className="serif-accent">sent.</span>
                     </h3>
                     <p className="max-w-md text-sm leading-relaxed text-muted">
-                      Thanks {values.name.split(" ")[0]} — I&apos;ll get back to you at{" "}
-                      <span className="text-fg">{values.email}</span> as soon as I can.
+                      Thanks {values.name.split(" ")[0]} — your message landed in my
+                      Telegram. I&apos;ll reply to <span className="text-fg">{values.email}</span>{" "}
+                      as soon as I can.
                     </p>
                     <button
                       type="button"
@@ -294,10 +320,22 @@ export default function Contact() {
                       ) : null}
                     </label>
 
+                    {formError ? (
+                      <p role="alert" className="mono-label text-red-500">
+                        {formError}
+                      </p>
+                    ) : null}
+
                     <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-2">
-                      <span className="mono-label text-muted">
-                        Or email {profile.email}
-                      </span>
+                      <a
+                        href="https://t.me/Vuthin007"
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cursor="link"
+                        className="mono-label text-muted transition-colors duration-300 hover:text-accent"
+                      >
+                        Or message me on Telegram @Vuthin007
+                      </a>
                       <MagneticButton
                         as="button"
                         type="submit"

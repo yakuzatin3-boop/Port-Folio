@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, LayoutGrid, List } from "lucide-react";
 import { EASE, SPRING_SNAP } from "../../lib/easing";
 import SectionHeading from "../ui/SectionHeading";
 import HoverRevealList from "../ui/HoverRevealList";
+import ProjectDetailCard from "../ui/ProjectDetailCard";
 import { projects, moreWork } from "../../data/projects";
+import { projectDetails } from "../../data/projectDetails";
 import { githubUrl } from "../../data/socials";
 import TiltCard from "../ui/TiltCard";
 
@@ -13,14 +15,28 @@ const views = [
   { id: "list", label: "List", icon: List },
 ];
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onOpen }) {
   return (
     <TiltCard
       as="a"
       href={project.href ?? "#contact"}
       target={project.href ? "_blank" : undefined}
       rel={project.href ? "noreferrer" : undefined}
-      aria-label={`${project.title} (opens in a new tab)`}
+      onClick={(event) => {
+        if (
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0
+        ) {
+          return;
+        }
+        event.preventDefault();
+        event.currentTarget.focus({ preventScroll: true });
+        onOpen(project);
+      }}
+      aria-label={`${project.title} — view project details`}
       data-cursor="view"
       className={`group block ${index % 2 === 1 ? "lg:mt-20" : ""}`}
       image={project.image}
@@ -60,6 +76,17 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   const [view, setView] = useState("grid");
+  const [selected, setSelected] = useState(null);
+
+  const openProject = useCallback((project, badge) => {
+    setSelected({
+      ...project,
+      ...(projectDetails[project.id] ?? {}),
+      indexBadge: badge ?? project.index,
+    });
+  }, []);
+
+  const closeProject = useCallback(() => setSelected(null), []);
 
   return (
     <section id="projects" className="relative section-pad scroll-mt-32">
@@ -118,7 +145,7 @@ export default function Projects() {
               className="grid grid-cols-1 gap-x-6 gap-y-14 lg:grid-cols-2"
             >
               {projects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
+                <ProjectCard key={project.id} project={project} index={index} onOpen={openProject} />
               ))}
             </motion.div>
           ) : (
@@ -131,13 +158,10 @@ export default function Projects() {
             >
               <HoverRevealList
                 items={projects.map((project) => ({
-                  id: project.id,
-                  title: project.title,
-                  year: project.year,
-                  type: project.type,
-                  image: project.image,
+                  ...project,
                   href: project.href ?? "#contact",
                 }))}
+                onSelect={openProject}
               />
             </motion.div>
           )}
@@ -174,51 +198,78 @@ export default function Projects() {
             transition={{ duration: 0.45, ease: EASE }}
             className="mt-8 grid grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3"
           >
-            {moreWork.map((project, index) => (
-              <TiltCard
-                key={project.id}
-                as="a"
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${project.title} (opens in a new tab)`}
-                data-cursor="view"
-                className="group block"
-                image={project.image}
-                srcset={project.srcset}
-                fallback={project.fallback}
-                blur={project.blur}
-                alt={project.alt || project.title}
-                index={index}
-                accent={project.accent}
-                hasLive={!!project.live}
-                indexBadge={String(index + 7).padStart(2, "0")}
-                year={project.year}
-                arrowIcon={<ArrowUpRight size={17} />}
-              >
-                <div className="min-w-0">
-                  <span className="mono-label text-muted">{project.type}</span>
-                  <h3 className="mt-3 font-display text-[clamp(1.25rem,2vw,1.75rem)] font-bold uppercase tracking-[-0.04em] text-fg transition-colors duration-300 group-hover:text-accent">
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
-                    {project.description}
-                  </p>
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {project.tags?.map((tag) => (
-                      <li
-                        key={tag}
-                        className="mono-label rounded-chip border border-line bg-surface-2 px-2.5 py-1.5 text-muted transition-colors duration-300 group-hover:border-line-hover"
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </TiltCard>
-            ))}
+            {moreWork.map((project, index) => {
+              const badge = String(index + 7).padStart(2, "0");
+              return (
+                <TiltCard
+                  key={project.id}
+                  as="a"
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(event) => {
+                    if (
+                      event.metaKey ||
+                      event.ctrlKey ||
+                      event.shiftKey ||
+                      event.altKey ||
+                      event.button !== 0
+                    ) {
+                      return;
+                    }
+                    event.preventDefault();
+                    event.currentTarget.focus({ preventScroll: true });
+                    openProject(project, badge);
+                  }}
+                  aria-label={`${project.title} — view project details`}
+                  data-cursor="view"
+                  className="group block"
+                  image={project.image}
+                  srcset={project.srcset}
+                  fallback={project.fallback}
+                  blur={project.blur}
+                  alt={project.alt || project.title}
+                  index={index}
+                  accent={project.accent}
+                  hasLive={!!project.live}
+                  indexBadge={badge}
+                  year={project.year}
+                  arrowIcon={<ArrowUpRight size={17} />}
+                >
+                  <div className="min-w-0">
+                    <span className="mono-label text-muted">{project.type}</span>
+                    <h3 className="mt-3 font-display text-[clamp(1.25rem,2vw,1.75rem)] font-bold uppercase tracking-[-0.04em] text-fg transition-colors duration-300 group-hover:text-accent">
+                      {project.title}
+                    </h3>
+                    <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
+                      {project.description}
+                    </p>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {project.tags?.map((tag) => (
+                        <li
+                          key={tag}
+                          className="mono-label rounded-chip border border-line bg-surface-2 px-2.5 py-1.5 text-muted transition-colors duration-300 group-hover:border-line-hover"
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </TiltCard>
+              );
+            })}
           </motion.div>
         </div>
+
+        <AnimatePresence>
+          {selected && (
+            <ProjectDetailCard
+              key={selected.id}
+              project={selected}
+              onClose={closeProject}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

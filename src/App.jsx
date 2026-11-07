@@ -32,7 +32,7 @@ function App() {
       <ScrollProgress />
       <CustomCursor />
 
-      {/* Usage: simulates 0->100%, swallows the image, flashes, then reveals
+        {/* Usage: simulates 0->100%, explodes the black hole, then reveals
           the main content. Also accepts progress={n} to drive it yourself:
           <BlackHoleLoader progress={p} onComplete={() => setLoading(false)} /> */}
       {!ready && <BlackHoleLoader onComplete={() => setReady(true)} />}
