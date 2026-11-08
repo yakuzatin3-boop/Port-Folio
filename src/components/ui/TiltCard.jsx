@@ -2,7 +2,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { MAX_TILT, PARALLAX, SPRING_STIFFNESS, SPRING_DAMPING } from '../../lib/tilt';
 
-const CARD_RADIUS = 24;
 const MAGNET_MAX = 8;
 
 export default function TiltCard({
@@ -177,7 +176,7 @@ export default function TiltCard({
     >
       <motion.div
         className={
-          'relative w-full rounded-card transform-gpu transition-transform duration-500 ease-out [transform-style:preserve-3d] ' +
+          'relative w-full rounded-card border border-line bg-surface p-3 transform-gpu transition-[transform,border-color] duration-500 ease-out [transform-style:preserve-3d] group-hover:border-line-hover sm:p-4 ' +
           scale
         }
         style={{ rotateX: tiltDisabled ? 0 : rotateX, rotateY: tiltDisabled ? 0 : rotateY }}
@@ -193,80 +192,96 @@ export default function TiltCard({
             opacity: tiltDisabled ? 0 : hovered ? 0.6 : 0.3,
           }}
         />
-        <div
-          className="relative aspect-[4/3] w-full overflow-hidden rounded-card border border-line bg-surface [transform:translateZ(0)]"
-          style={{ borderRadius: CARD_RADIUS + 'px' }}
-        >
-          {blur && (
-            <img
-              src={blur}
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-            />
-          )}
-          {image && (
-            <motion.picture className="relative z-10" style={{ transform: imgTransform }}>
-              {srcset && (
-                <source
-                  srcSet={srcset}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              )}
+        <div className="relative [transform:translateZ(0)]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-bg">
+            {blur && (
               <img
-                ref={imgRef}
-                src={fallback || image}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                alt={alt || ''}
+                src={blur}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
-                decoding="async"
-                width={1600}
-                height={1200}
-                onLoad={() => setImgLoaded(true)}
-                onError={() => setImgLoaded(true)}
-                className={
-                  'h-full w-full object-cover will-change-transform transition-opacity duration-500 ' +
-                  (imgLoaded ? 'opacity-100' : 'opacity-0')
-                }
               />
-            </motion.picture>
-          )}
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-1/4 [transform:translateZ(16px)]"
-            style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 100%)' }}
-            aria-hidden="true"
-          />
-          {!tiltDisabled && (
-            <motion.div
-              className="pointer-events-none absolute inset-0 z-30 mix-blend-soft-light transition-opacity duration-500 [transform:translateZ(18px)]"
-              style={{ background: glowBg, opacity: hovered && !reducedMotion ? 0.5 : 0 }}
+            )}
+            {image && (
+              <motion.picture className="relative z-10" style={{ transform: imgTransform }}>
+                {srcset && (
+                  <source
+                    srcSet={srcset}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                )}
+                <img
+                  ref={imgRef}
+                  src={fallback || image}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  alt={alt || ''}
+                  loading="lazy"
+                  decoding="async"
+                  width={1600}
+                  height={1200}
+                  onLoad={() => setImgLoaded(true)}
+                  onError={() => setImgLoaded(true)}
+                  className={
+                    'h-full w-full object-cover will-change-transform transition-opacity duration-500 ' +
+                    (imgLoaded ? 'opacity-100' : 'opacity-0')
+                  }
+                />
+              </motion.picture>
+            )}
+            <div
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-1/4 [transform:translateZ(16px)]"
+              style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 100%)' }}
+              aria-hidden="true"
             />
-          )}
-        </div>
-        {indexBadge !== undefined && indexBadge !== null && indexBadge !== '' && (
-          <motion.span className="mono-label absolute left-4 top-4 rounded-full border border-line bg-glass px-3 py-1.5 backdrop-blur-md [transform:translateZ(30px)]">
-            {indexBadge}
-          </motion.span>
-        )}
-        {year && (
-          <motion.span
-            className="mono-label absolute right-4 top-4 rounded-full px-3 py-1.5 backdrop-blur-md [transform:translateZ(30px)]"
-            style={{
-              backgroundColor: accentColor + '1A',
-              color: accentColor,
-              border: '1px solid ' + accentColor + '40',
-            }}
+            {!tiltDisabled && (
+              <motion.div
+                className="pointer-events-none absolute inset-0 z-30 mix-blend-soft-light transition-opacity duration-500 [transform:translateZ(18px)]"
+                style={{ background: glowBg, opacity: hovered && !reducedMotion ? 0.5 : 0 }}
+              />
+            )}
+            {indexBadge !== undefined && indexBadge !== null && indexBadge !== '' && (
+              <motion.span className="mono-label absolute left-4 top-4 z-40 rounded-full border border-line bg-glass px-3 py-1.5 backdrop-blur-md">
+                {indexBadge}
+              </motion.span>
+            )}
+            {year && (
+              <motion.span
+                className="mono-label absolute right-4 top-4 z-40 rounded-full px-3 py-1.5 backdrop-blur-md"
+                style={{
+                  backgroundColor: accentColor + '1A',
+                  color: accentColor,
+                  border: '1px solid ' + accentColor + '40',
+                }}
+              >
+                {year}
+              </motion.span>
+            )}
+            {hasLive && (
+              <motion.span className="mono-label absolute bottom-4 left-4 z-40 inline-flex items-center gap-2 rounded-full border border-line bg-glass px-3 py-1.5 text-accent backdrop-blur-md">
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
+                LIVE
+              </motion.span>
+            )}
+          </div>
+
+          {/* HUD viewfinder frame */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-1 opacity-60 transition-opacity duration-500 group-hover:opacity-100"
+            style={{ color: accentColor }}
           >
-            {year}
-          </motion.span>
-        )}
-        {hasLive && (
-          <motion.span className="mono-label absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-line bg-glass px-3 py-1.5 text-accent backdrop-blur-md [transform:translateZ(30px)]">
-            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
-            LIVE
-          </motion.span>
-        )}
+            <span className="absolute left-0 top-0 h-4 w-4 border-l-[2px] border-t-[2px] border-current transition-[width,height] duration-500 ease-out group-hover:h-5 group-hover:w-5" />
+            <span className="absolute right-0 top-0 h-4 w-4 border-r-[2px] border-t-[2px] border-current transition-[width,height] duration-500 ease-out group-hover:h-5 group-hover:w-5" />
+            <span className="absolute bottom-0 left-0 h-4 w-4 border-b-[2px] border-l-[2px] border-current transition-[width,height] duration-500 ease-out group-hover:h-5 group-hover:w-5" />
+            <span className="absolute bottom-0 right-0 h-4 w-4 border-b-[2px] border-r-[2px] border-current transition-[width,height] duration-500 ease-out group-hover:h-5 group-hover:w-5" />
+
+            <span className="absolute left-1/2 top-0 h-1.5 w-px -translate-x-1/2 bg-current opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <span className="absolute bottom-0 left-1/2 h-1.5 w-px -translate-x-1/2 bg-current opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <span className="absolute left-0 top-1/2 h-px w-1.5 -translate-y-1/2 bg-current opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <span className="absolute right-0 top-1/2 h-px w-1.5 -translate-y-1/2 bg-current opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          </div>
+        </div>
         <motion.div
           className="absolute bottom-4 right-4"
           style={{ x: arrowXSpring, y: arrowYSpring, z: 44 }}
@@ -279,7 +294,7 @@ export default function TiltCard({
             {arrowIcon || <span>&rarr;</span>}
           </span>
         </motion.div>
-        <motion.div className="mt-5 flex items-start justify-between gap-6 [transform:translateZ(10px)]">
+        <motion.div className="mt-5 flex items-start justify-between gap-6 pb-1 [transform:translateZ(10px)]">
           {children}
         </motion.div>
       </motion.div>

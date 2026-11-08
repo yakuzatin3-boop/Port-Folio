@@ -21,13 +21,13 @@ import { BLACK_HOLE_BLAST_DURATION, createBlackHoleBlast } from "../ui/transitio
  * ------------------------------------------------------------------------ */
 const CONFIG = {
   speed: {
-    simulatedDuration: 3600, // ms for 0 -> 100 when no `progress` prop is given
+    simulatedDuration: 3000, // ms for 0 -> 100 when no `progress` prop is given
   },
   catch: {
     stageDurationMs: BLACK_HOLE_BLAST_DURATION,
-    flashDelayMs: 180, // delay before the loader fades (lets the flash pop)
-    fadeMs: 700, // loader fade-out duration
-    completeBufferMs: 120, // slack before onComplete() fires
+    flashDelayMs: 100, // delay before the loader fades (lets the flash pop)
+    fadeMs: 500, // loader fade-out duration (keep in sync with duration-500 below)
+    completeBufferMs: 80, // slack before onComplete() fires
   },
 };
 
@@ -64,7 +64,7 @@ export default function BlackHoleLoader({ progress, onComplete }) {
   }, []);
 
   /* ------------------------------------------------------------------------
-  * Phase 2 -> 3: after the canvas sequence, flash and fade out the loader.
+   * Phase 2 -> 3: after the canvas sequence, flash and fade out the loader.
    * ---------------------------------------------------------------------- */
   const beginFlash = useCallback(() => {
     if (phaseRef.current !== "catch") return;
@@ -80,7 +80,7 @@ export default function BlackHoleLoader({ progress, onComplete }) {
   }, []);
 
   /* ------------------------------------------------------------------------
-  * Phase 1 -> 2: progress hit 100%. Hand the image over to the canvas stage.
+   * Phase 1 -> 2: progress hit 100%. Hand the image over to the canvas stage.
    * ---------------------------------------------------------------------- */
   const beginCatch = useCallback(() => {
     if (phaseRef.current !== "loading") return;
@@ -159,17 +159,17 @@ export default function BlackHoleLoader({ progress, onComplete }) {
   return (
     <div
       role="status"
-      className={`blackhole-loader fixed inset-0 z-[100] select-none overflow-hidden bg-black transition-opacity delay-300 duration-700 ${
+      className={`blackhole-loader fixed inset-0 z-[100] select-none overflow-hidden bg-black transition-opacity delay-100 duration-500 ${
         phase === "flash" ? "opacity-0" : "opacity-100"
       }`}
     >
       {/* Star field + accretion disk + lensing (shared canvas scene) */}
       <BlackHoleScene className="absolute inset-0 h-full w-full" getDynamics={getDynamics} />
 
-      {/* Rotating soft glow ring (bh-spin) */}
+      {/* Rotating soft glow ring (bh-spin) — bigger than before (68vmin -> 90vmin) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 -ml-[34vmin] -mt-[34vmin] h-[68vmin] w-[68vmin] animate-bh-spin rounded-full opacity-40 mix-blend-screen"
+        className="pointer-events-none absolute left-1/2 top-1/2 -ml-[45vmin] -mt-[45vmin] h-[90vmin] w-[90vmin] animate-bh-spin rounded-full opacity-50 mix-blend-screen"
         style={{
           background:
             "conic-gradient(from 0deg, transparent 0deg, rgba(255,150,70,0.5) 55deg, transparent 130deg, rgba(139,92,246,0.45) 210deg, transparent 300deg, rgba(255,150,70,0.3) 350deg)",
@@ -205,16 +205,16 @@ export default function BlackHoleLoader({ progress, onComplete }) {
 
       {/* Progress counter, centered opposite the black hole */}
       <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 md:justify-end md:px-[8vw]">
-        <div className="w-[min(54vw,230px)] md:w-[240px]">
+        <div className="w-[min(54vw,230px)] md:w-[140px]">
           {/* Progress bar + percentage counter (fades once caught) */}
           <div
-            className={`mt-5 transition-opacity duration-500 ${
+            className={`mt-5 transition-opacity duration-300 ${
               caught ? "opacity-0" : "opacity-100"
             }`}
           >
             <div className="h-[6px] w-full overflow-hidden rounded-full bg-white/10 ring-1 ring-white/10">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#ffb260] via-[#ff6a3c] to-[#a855f7] transition-[width] duration-300 ease-out"
+                className="h-full rounded-full bg-gradient-to-r from-[#ffb260] via-[#ff6a3c] to-[#a855f7] transition-[width] duration-200 ease-out"
                 style={{ width: `${display}%`, boxShadow: "0 0 14px rgba(255,150,70,0.75)" }}
               />
             </div>

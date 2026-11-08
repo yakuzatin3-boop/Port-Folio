@@ -59,7 +59,7 @@ function ProjectCard({ project, index, onOpen }) {
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
           {project.description}
         </p>
-        <ul className="mt-4 flex flex-wrap gap-2">
+        <ul className="mt-4 flex flex-wrap gap-2 pr-16">
           {project.tags.map((tag) => (
             <li
               key={tag}
@@ -244,7 +244,7 @@ export default function Projects() {
                     <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
                       {project.description}
                     </p>
-                    <ul className="mt-4 flex flex-wrap gap-2">
+                    <ul className="mt-4 flex flex-wrap gap-2 pr-16">
                       {project.tags?.map((tag) => (
                         <li
                           key={tag}
