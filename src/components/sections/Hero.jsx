@@ -208,6 +208,7 @@ export default function Hero() {
       className="relative flex min-h-screen min-h-[100svh] scroll-mt-32 flex-col justify-center overflow-hidden pb-20 pt-28"
     >
       {/* Cursor spotlight */}
+      
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
